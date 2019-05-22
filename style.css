@@ -1,0 +1,83 @@
+header {
+    border: 1px solid black;
+    height: 20%;
+    text-align: center;
+    font-size: 100px;
+    margin: 25px;
+}
+
+body {
+    border: 1px solid black;
+    background-color: #e4bf7f;
+    height: 81vh;
+    width: 151vh;
+}
+main {
+    border: 1px solid black;
+    height: 72%;
+    width: 77%;
+    float: left;
+    padding-bottom: 1%;
+    padding-top: 1%;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.sidePanelTitle {
+    font-size: 80px;
+    text-align: center;
+}
+.sidePanel {
+    border: 1px solid black;
+    height: 70%;
+    width: 16%;
+    float: left;
+    padding-bottom: 3%;
+}
+.side {
+    border: 1px solid black;
+    height: 13.3%;
+    background-color: lightblue;
+    text-align: center;
+    font-size: 70px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.container {
+    /*border: 1px solid black;*/
+    height: 98%;
+    width: 98%;
+    margin: 0.5%;
+}
+/*.cardWrapper {*/
+/*    height: 100%;*/
+/*    width: 100%;*/
+
+.card {
+    border: 1px solid black;
+    height: 32%;
+    width: 16%;
+    background-color: red;
+    position: relative;
+    float: left;
+    margin: 0.25%;
+}
+.face {
+    border: 1px solid black;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+.front {
+    background: lime;
+}
+.back {
+    background: black;
+}
+.card:hover .back {
+    display: none;
+}
