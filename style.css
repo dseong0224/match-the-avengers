@@ -82,6 +82,33 @@ span {
 .back {
     background-image: url("./assets/images/lfz-card.jpg");
 }
-.card:hover .back {
-    display: none;
+.andy {
+    background-image: url("./assets/images/andy.jpg");
+}
+.bill {
+    background-image: url("./assets/images/bill.jpg");
+}
+.brett {
+    background-image: url("./assets/images/brett.jpg");
+}
+.cody {
+    background-image: url("./assets/images/dan.jpg");
+}
+.dan {
+    background-image: url("./assets/images/dan.jpg");
+}
+.scott {
+    background-image: url("./assets/images/scott.jpg");
+}
+.tim-d {
+    background-image: url("./assets/images/tim-d.jpg");
+}
+.tim-h {
+    background-image: url("./assets/images/tim-h.jpg");
+}
+.tj {
+    background-image: url("./assets/images/tj.jpg");
+}
+.hidden {
+    display:none
 }
