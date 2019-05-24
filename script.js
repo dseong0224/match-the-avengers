@@ -38,7 +38,12 @@ function handleCardClick(event) {
             }
             if(matches === max_matches){
                 //win condition
-                alert("you won")
+                // alert("you won")
+
+                $('#modalBody').removeClass("hide");
+                
+                // $('.close').on('click',)
+
             }
             console.log('match:',matches);
 
