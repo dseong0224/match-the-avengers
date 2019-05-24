@@ -1,0 +1,145 @@
+
+header {
+    border: 1px solid black;
+    height: 15%;
+    text-align: center;
+    vertical-align: center;
+    font-size: 3vh;
+    margin: 2%;
+    margin-bottom: 1%;
+}
+
+body {
+    border: 1px solid black;
+    background-color: #e4bf7f;
+    height: 100vh;
+    position: relative;
+}
+main {
+    border: 1px solid black;
+    height: 72%;
+    width: 77%;
+    float: left;
+    padding-bottom: 1%;
+    padding-top: 1%;
+    padding-left: 3.5%;
+    padding-right: 3.5%;
+}
+
+.sidePanelTitle {
+    font-size: 5vh;
+    text-align: center;
+    vertical-align: middle;
+}
+.sidePanel {
+    border: 1px solid black;
+    height: 75%;
+    width: 11%;
+    float: left;
+    margin-right: 1%;
+    margin-left: 2%
+}
+.side {
+    border: 1px solid black;
+    height: 13.3%;
+    background-color: lightblue;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    display: flex;
+}
+span {
+    margin: auto;
+    height: 3vh;
+}
+.container {
+    height: 98%;
+    width: 98%;
+    margin: 0.5%;
+    text-align: center;
+}
+.card {
+    /*border: 1px solid black;*/
+    height: 32%;
+    width: 16%;
+    position: relative;
+    float: left;
+    margin: 0.25%;
+}
+.face {
+    border: 1px solid black;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+.front {
+    background: lime;
+}
+.back {
+    background-image: url("./assets/images/lfz-card.jpg");
+}
+.andy {
+    background-image: url("./assets/images/andy.jpg");
+}
+.bill {
+    background-image: url("./assets/images/bill.jpg");
+}
+.brett {
+    background-image: url("./assets/images/brett.jpg");
+}
+.cody {
+    background-image: url("./assets/images/cody.jpg");
+}
+.dan {
+    background-image: url("./assets/images/dan.jpg");
+}
+.scott {
+    background-image: url("./assets/images/scott.jpg");
+}
+.tim-d {
+    background-image: url("./assets/images/tim-d.jpg");
+}
+.tim-h {
+    background-image: url("./assets/images/tim-h.jpg");
+}
+.tj {
+    background-image: url("./assets/images/tj.jpg");
+}
+.hidden {
+    display:none
+}
+.modal {
+
+    position: fixed;
+    z-index: 1;
+    width: 48%;
+    height: 27%;
+    overflow: auto;
+    background-color: cadetblue;
+    margin-left: 13%;
+    margin-top: 12%;
+}
+.hide {
+    display: none; /* Hidden by default */
+}
+
+p {
+    text-align: center;
+    font-size: 5vh;
+    font-family: Georgia;
+}
+.close {
+    color: red;
+    float: right;
+    font-size: 2vh;
+    font-weight: bold;
+ }
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
