@@ -48,10 +48,12 @@ main {
     margin-top: 5%;
     margin-bottom: 5%;
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 span {
     margin: auto;
-    height: 3vh;
+    font-size: 3rem;
 }
 .container {
     height: 98%;
@@ -119,13 +121,29 @@ span {
     height: 27%;
     overflow: auto;
     background-color: cadetblue;
-    margin-left: 13%;
-    margin-top: 12%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 .hide {
     display: none; /* Hidden by default */
 }
-
+spanOne {
+    border: 1px solid red;
+    background-color: lightpink;
+    margin-top: 5%;
+    margin-left: 15%;
+    font-size: 3vh;
+    float: left;
+}
+spanTwo {
+    border: 1px solid blue;
+    background-color: lightpink;
+    margin-top: 5%;
+    margin-right: 20%;
+    font-size: 3vh;
+    float: right;
+}
 p {
     text-align: center;
     font-size: 5vh;
@@ -142,4 +160,11 @@ p {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+midalshoadow{
+    display: none
+    position: fixed
+    opacity: 5%
+
 }
