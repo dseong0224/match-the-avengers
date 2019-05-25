@@ -69,6 +69,12 @@ span {
     float: left;
     margin: 0.25%;
 }
+.unclickable {
+    pointer-events: none;
+    background-color: lightpink;
+    background-color: lightpink;
+    height: 100%;
+}
 .face {
     border: 1px solid black;
     background-size: cover;
@@ -76,6 +82,15 @@ span {
     height: 100%;
     width: 100%;
     position: absolute;
+}
+.selectedCardCover {
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    opacity: 0.5;
+    background-color: grey;
 }
 .front {
     background: lime;
@@ -148,23 +163,4 @@ p {
     text-align: center;
     font-size: 5vh;
     font-family: Georgia;
-}
-.close {
-    color: red;
-    float: right;
-    font-size: 2vh;
-    font-weight: bold;
- }
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-midalshoadow{
-    display: none
-    position: fixed
-    opacity: 5%
-
 }
