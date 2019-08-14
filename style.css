@@ -1,166 +1,133 @@
-
-header {
-    border: 1px solid black;
-    height: 15%;
-    text-align: center;
-    vertical-align: center;
-    font-size: 3vh;
-    margin: 2%;
-    margin-bottom: 1%;
+html {
+	box-sizing: border-box;
 }
+header{
+    height: 10%;
+    width: 100%;
+    background-color:transparent, rgba(46, 61, 73, 0.5);
+    text-align: center
+}
+
+/* *,
+*::before,
+*::after {
+	box-sizing: inherit;
+} */
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row
+}
+
+html,
+body {
+    display: inline-block;
+	width: 100vw;
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+}
+
+@font-face {
+    font-family: avengers-font;
+    src: url(./assets/images/avengeance-heroic-avenger/AVENGEANCE\ HEROIC\ AVENGER\ BD.ttf);
+  }
 
 body {
-    border: 1px solid black;
-    background-color: #e4bf7f;
-    height: 100vh;
-    position: relative;
-}
-main {
-    border: 1px solid black;
-    height: 72%;
-    width: 77%;
-    float: left;
-    padding-bottom: 1%;
-    padding-top: 1%;
-    padding-left: 3.5%;
-    padding-right: 3.5%;
+    background: black;
+    background-image: url(./assets/images/avengers_endgame_memory_background.jpeg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: avengers-font,fantasy;
+    text-shadow: 2px 2px white;
+	font-size: 2.5rem;
 }
 
-.sidePanelTitle {
-    font-size: 5vh;
-    text-align: center;
-    vertical-align: middle;
+aside{
+    background-color: rgba(141, 65, 228, 0.7);
+    border-radius: 7px;
+    display: inline-block;
+    margin: 10% 2%;
 }
-.sidePanel {
-    border: 1px solid black;
-    height: 75%;
-    width: 11%;
-    float: left;
-    margin-right: 1%;
-    margin-left: 2%
+
+main {
+    position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    flex-direction: column;
 }
-.side {
-    border: 1px solid black;
-    height: 13.3%;
-    background-color: lightblue;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-span {
-    margin: auto;
-    font-size: 3rem;
-}
-.container {
-    height: 98%;
-    width: 98%;
-    margin: 0.5%;
+
+h1 {
     text-align: center;
 }
+
+.deck {
+	width: 50%;
+    background: #716F71;
+    background-image: url(./assets/images/gifs/blue\ energy.gif);
+    background-position: center;
+    background-size: cover;
+	padding: 0.5rem;
+	border-radius: 5px;
+	box-shadow: 10px 10px 10px 0 rgba(46, 61, 73, 0.5);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.deck .card .back{
+	height: 9.5rem;
+	width: 9.5rem;
+	margin: 0.25rem 0.25rem;
+	background: #141214;
+	font-size: 0;
+    color: #ffffff;
+    background-image: url(./assets/images/avengers_logo.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+	border-radius: 5px;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 10px 10px 10px 0 rgba(46, 61, 73, 0.5);
+}
+
+.card:hover{
+    background-color: white;
+    opacity: 0.7;
+}
+
 .card {
-    /*border: 1px solid black;*/
-    height: 32%;
-    width: 16%;
-    position: relative;
-    float: left;
-    margin: 0.25%;
+    transition: transform 1.5s;
+    transform-style: preserve-3d;
 }
-.unclickable {
-    pointer-events: none;
-    background-color: lightpink;
-    background-color: lightpink;
-    height: 100%;
-}
-.face {
-    border: 1px solid black;
-    background-size: cover;
-    background-position: center;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-}
-.selectedCardCover {
-    background-size: cover;
-    background-position: center;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    opacity: 0.5;
-    background-color: grey;
-}
+
 .front {
-    background: lime;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    height: 9.5rem;
+	width: 9.5rem; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 0;
+    position: absolute;
+
+    background-position: center;
+    border-radius: 5px;
+
 }
 .back {
-    background-image: url("./assets/images/lfz-card.jpg");
+    backface-visibility: hidden;
 }
-.andy {
-    background-image: url("./assets/images/andy.jpg");
+.isFlipped {
+    transform: rotateY(180deg);
 }
-.bill {
-    background-image: url("./assets/images/bill.jpg");
-}
-.brett {
-    background-image: url("./assets/images/brett.jpg");
-}
-.cody {
-    background-image: url("./assets/images/cody.jpg");
-}
-.dan {
-    background-image: url("./assets/images/dan.jpg");
-}
-.scott {
-    background-image: url("./assets/images/scott.jpg");
-}
-.tim-d {
-    background-image: url("./assets/images/tim-d.jpg");
-}
-.tim-h {
-    background-image: url("./assets/images/tim-h.jpg");
-}
-.tj {
-    background-image: url("./assets/images/tj.jpg");
-}
-.hidden {
-    display:none
-}
-.modal {
 
-    position: fixed;
-    z-index: 1;
-    width: 48%;
-    height: 27%;
-    overflow: auto;
-    background-color: cadetblue;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
-.hide {
-    display: none; /* Hidden by default */
-}
-spanOne {
-    border: 1px solid red;
-    background-color: lightpink;
-    margin-top: 5%;
-    margin-left: 15%;
-    font-size: 3vh;
-    float: left;
-}
-spanTwo {
-    border: 1px solid blue;
-    background-color: lightpink;
-    margin-top: 5%;
-    margin-right: 20%;
-    font-size: 3vh;
-    float: right;
-}
-p {
-    text-align: center;
-    font-size: 5vh;
-    font-family: Georgia;
-}
+

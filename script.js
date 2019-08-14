@@ -1,106 +1,125 @@
-$(document).ready(function(){
-    $('.card').click(handleCardClick);
-})
-//add feature: make a conditional that restricts double clicks
-var firstCardClicked = null;
-var secondCardClicked = null;
-var matches = null;
 
-var firstCard = null;
-var secondCard = null;
+$(document).ready(startGame)
 
-var max_matches = 9;
-var attempts = 0;
-var games_played = 0;
+let singleCardsArray = [
+    "url(./assets/images/timholland_card.jpg)",
+    "url(./assets/images/captain_america_card.jpg)",
+    "url(./assets/images/antman_card.jpg)",
+    "url(./assets/images/hulk_card.jpg)",
+    "url(./assets/images/ironmaninsuit_card.png)",
+    "url(./assets/images/thor_card.jpg)",
+    "url(./assets/images/drstrange_card.jpeg)",
+    "url(./assets/images/blackwidow_card.jpg)",
+    "url(./assets/images/scarletwitch_card.jpg)",
+    "url(./assets/images/vision_card.jpg)",
+    "url(./assets/images/shuri_card.jpeg)",
+    "url(./assets/images/captainmarvel_card.jpg)",
+    "url(./assets/images/hawkeye_card.jpg)",
+    "url(./assets/images/ironmaninsuit_from_poster.png)"
+]
 
+let firstCardUrl = null;
+let secondCardUrl = null;
+let totalMatches = null;
+
+let firstCard = null;
+let secondCard = null;
+
+let clickable = true;
+
+let maxMatches = 8;
+let attempts = 0;
+
+
+function shuffleArray(array) {
+var currentIndex = array.length, temporaryValue, randomIndex;
+
+while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);   
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+}
+return array;
+}
+
+function shuffleCards (cardsArray) {             
+for (cardIndex = 0; cardIndex < cardsArray.length; cardIndex++ ) {
+    $(".front:eq("+cardIndex+")").css('background-image', cardsArray[cardIndex]);
+}    
+}
+function generateCardHolders(cardsArray){
+                
+    for (cardIndex = 0; cardIndex < cardsArray.length; cardIndex++ ) {
+        let cardDiv = $('<div>').addClass('card');
+        let frontDiv = $('<div>').addClass('front').css('background-image', cardsArray[cardIndex])
+        let backDiv = $('<div>').addClass('back');
+        let gameDeck = cardDiv.append(frontDiv,backDiv);
+        $(".deck").append(gameDeck)
+    }    
+}
+function setGameTable (){
+let shuffledArray = shuffleArray(singleCardsArray)
+let gameDeck = shuffledArray.slice(0,8);
+gameDeck = gameDeck.concat(gameDeck);
+gameDeck = shuffleArray(gameDeck);
+generateCardHolders(gameDeck);
+}
+
+function startGame() {
+setGameTable()
+$('.card').click(handleCardClick);
+$('.card').click(displayStats);
+}
 
 function handleCardClick(event) {
 
-    // displayStats();
-    $(event.currentTarget).find('.card').addClass('unclickable')
-    //need to add feature: same card cannot be clicked twice in a row
+if(clickable) {
+let clickedCard = $(event.currentTarget);
+clickedCard.toggleClass('isFlipped');
 
-    $(this).find('.back').addClass('hidden');
-
-    if(firstCardClicked === null && secondCardClicked === null){
-
-        firstCardClicked = $(event.currentTarget).find(".front").css('background-image');
-        firstCard = $(event.currentTarget);
-    }
-    else if(firstCardClicked!== null && secondCardClicked === null){
-
-        secondCardClicked = $(event.currentTarget).find(".front").css('background-image');
-        secondCard = $(event.currentTarget);
-
-        if(firstCardClicked !== null && secondCardClicked !== null){
-            attempts++;
-            $('.attemptsCount span').text(attempts);
-
-
-        }
-
-        if(firstCardClicked === secondCardClicked){
-
-            firstCard.find('.selectedCardCover').removeClass('hide');
-            secondCard.find('.selectedCardCover').removeClass('hide');
-
-            //add feature: flipped cards should not be clicked
-
-            if(matches < max_matches) {
-                matches += 1;
-            }
-            if(matches === max_matches){
-
-                attempts = 0;
-
-                matches = 0;
-
-                $('#modalBody').removeClass("hide");
-
-                $('.exit').click(function () {
-                    $('#modalBody').addClass("hide");
-                });
-                $('.playAgain').click(function () {
-                    $('#modalBody').addClass("hide");
-                    $('.card').find('.back').removeClass('hidden')
-                });
-                attempts = 0;
-                matches = 0;
-                games_played++;
-                $('.gamesPlayedCount span').text(games_played);
-            }
-
-            if(firstCardClicked && secondCardClicked){
-                firstCardClicked = null;
-                secondCardClicked = null;
-            }
-        }
-        else if(firstCardClicked !== secondCardClicked){
-            setTimeout(function(){
-                firstCard.find(".back").removeClass('hidden');
-                secondCard.find(".back").removeClass('hidden');
-                firstCard.find('.selectedCardCover').addClass('hide');
-                secondCard.find('.selectedCardCover').addClass('hide');
-            },1500);
-
-
-            if(firstCardClicked && secondCardClicked){
-                firstCardClicked = null;
-                secondCardClicked = null;
-            }
-        }
+    if (!firstCard) {
+        firstCard = clickedCard;
+        firstCardUrl = clickedCard.find(".front").css('background-image');
+        clickedCard.css('pointer-events', 'none');
+    } else if (!secondCard) {
+        secondCard = clickedCard;
+        secondCardUrl = clickedCard.find(".front").css('background-image');
+        clickedCard.css('pointer-events', 'none');
+        attempts++;
+        $('.attemptsCount span').text(attempts);
     }
 
-    function displayStats(){
+if (firstCardUrl && secondCardUrl){
+    if (firstCardUrl !== secondCardUrl) {
+    clickable = false; 
+        setTimeout( function () {
+            firstCard.toggleClass('isFlipped');
+            secondCard.toggleClass('isFlipped');
+            firstCard.css('pointer-events', ''); 
+            secondCard.css('pointer-events', '');
+            firstCard = null;
+            secondCard = null;
+            firstCardUrl = null;
+            secondCardUrl = null;
+            clickable = true; 
+        }, 1500);
+    } else if (firstCardUrl === secondCardUrl) {
+        totalMatches++;
+        firstCard = null;
+        firstCardUrl = null;
+        secondCard = null;
+        secondCardUrl = null;
+        clickable = false;
+        setTimeout( function () {
+            clickable = true;
+        }, 1500);
 
-        function calculateAccuracy(total,divider) {
-            return parseInt(total/divider * 100) + "%";
-        }
-
-        var average = calculateAccuracy(matches,attempts);
-
-        $('.accuracyPercentage span').text(average);
-    }
-    displayStats();
+    } else {
+        return
+    } 
+}
+}
 
 }

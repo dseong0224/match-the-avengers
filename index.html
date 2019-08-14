@@ -8,120 +8,44 @@
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
-    <title>memory match</title>
+    <title>Memory Match</title>
 </head>
 <body>
-<header><h1>LFZ Memory Match</h1></header>
-<aside class="sidePanel">
-    <div class="sidePanelTitle"><span>Stats</span></div>
-    <div class="side gamesPlayed"><span>Games Played</span></div>
-    <div class="side gamesPlayedCount"><span>0</span></div>
-    <div class="side attempts"><span>Attempts</span></div>
-    <div class="side attemptsCount"><span>0</span></div>
-    <div class="side accuracy"><span>Accuracy</span></div>
-    <div class="side accuracyPercentage"><span>0%</span></div>
-</aside>
-<main>
-
-    <div id="modalBody" class="modal hide">
-        <p>CONGRATS YOU WON!</p>
-        <spanOne class="playAgain">PLAY AGAIN</spanOne>
-        <spantwo class="exit">EXIT</spanTwo>
-    </div>
-
+<header><h2>Match the Avengers</h2></header>
 <div class="container">
-    <div class="card">
-        <div class="front face brett"></div>
-        <div class="back face"></div>
-        <div class="selectedCardCover hide"></div>
-    </div>
-    <div class="card">
-        <div class="front face brett"></div>
-        <div class="back face"></div>
-        <div class="selectedCardCover hide"></div>
-    </div>
-    <div class="card">
-        <div class="front face andy"></div>
-        <div class="back face"></div>
-        <div class="selectedCardCover hide"></div>
-    </div>
-    <div class="card">
-        <div class="front face bill"></div>
-        <div class="back face"></div>
-        <div class="selectedCardCover hide"></div>
-    </div>
-    <div class="card">
-        <div class="front face cody"></div>
-        <div class="back face"></div>
-        <div class="selectedCardCover hide"></div>
-    </div>
-    <div class="card">
-        <div class="front face dan"></div>
-        <div class="back face"></div>
-        <div class="selectedCardCover hide"></div>
-    </div>
-    <div class="card">
-        <div class="front face scott"></div>
-        <div class="back face"></div>
-        <div class="selectedCardCover hide"></div>
-    </div>
-    <div class="card">
-        <div class="front face tim-d"></div>
-        <div class="back face"></div>
-        <div class="selectedCardCover hide"></div>
-    </div>
-    <div class="card">
-        <div class="front face tim-h"></div>
-        <div class="back face"></div>
-        <div class="selectedCardCover hide"></div>
-    </div>
-    <div class="card">
-        <div class="front face tj"></div>
-        <div class="back face"></div>
-        <div class="selectedCardCover hide"></div>
-    </div>
-    <div class="card">
-        <div class="front face andy"></div>
-        <div class="back face"></div>
-        <div class="selectedCardCover hide"></div>
-    </div>
-    <div class="card">
-        <div class="front face bill"></div>
-        <div class="back face"></div>
-        <div class="selectedCardCover hide"></div>
-    </div>
-    <div class="card">
-        <div class="front face cody"></div>
-        <div class="back face"></div>
-        <div class="selectedCardCover hide"></div>
-    </div>
-    <div class="card">
-        <div class="front face dan"></div>
-        <div class="back face"></div>
-        <div class="selectedCardCover hide"></div>
-    </div>
-    <div class="card">
-        <div class="front face scott"></div>
-        <div class="back face"></div>
-        <div class="selectedCardCover hide"></div>
-    </div>
-    <div class="card">
-        <div class="front face tim-d"></div>
-        <div class="back face"></div>
-        <div class="selectedCardCover hide"></div>
-    </div>
-    <div class="card">
-        <div class="front face tim-h"></div>
-        <div class="back face"></div>
-        <div class="selectedCardCover hide"></div>
-    </div>
-    <div class="card">
-        <div class="front face tj"></div>
-        <div class="back face"></div>
-        <div class="selectedCardCover hide"></div>
-    </div>
+    <!-- <aside class="sidePanel">
+    <div class="sidePanelTitle"><spanTitle>Stats</spanTitle></div>
+    <div class="side gamesPlayedTitle"><span>Games Played</span></div>
+    <div class="side gamesPlayedCount"><span>0</span></div>
+    <div class="side attemptsTitle"><span>Attempts</span></div>
+    <div class="side attemptsCount"><span>0</span></div>
+    <div class="side accuracyTitle"><span>Accuracy</span></div>
+    <div class="side accuracyPercentage"><span>0%</span></div>
+</aside> -->
+<section class="stats-panel">
+        <div class="stones">
+            <div class="infinity"></div>
+            <div class="time"></div>
+            <div class="space"></div>
+        </div>
 
-</div>
+
+        Attempts<span class="attempts">0</span>
+
+
+        <div class="timer">Timer<span>0</span></div>
+
+        <div class="restart" onclick=startGame()>
+            <div class="infinity-gauntlet"></div>
+        </div>
+    </section>
+
+<main>
+    <div id="card-deck" class="deck"></div>
 </main>
+</div>
+
+
 </body>
 </html>
+
