@@ -31,6 +31,22 @@ let maxMatches = 8;
 let attempts = 0;
 
 
+var timeleft = 60;
+var downloadTimer = setInterval(function(){
+  document.getElementById("countdown").innerHTML = "00:"+timeleft;
+  timeleft -= 1;
+  if(timeleft <= 0){
+    clearInterval(downloadTimer);
+    document.getElementById("countdown").innerHTML = "Time Up"
+  }
+}, 1000);
+
+
+
+
+
+
+
 function shuffleArray(array) {
 var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -107,12 +123,18 @@ if (firstCardUrl && secondCardUrl){
         }, 1500);
     } else if (firstCardUrl === secondCardUrl) {
         totalMatches++;
+        
         firstCard = null;
         firstCardUrl = null;
         secondCard = null;
         secondCardUrl = null;
         clickable = false;
         setTimeout( function () {
+            if(totalMatches === 8){
+            $(".power").removeClass("shadow");
+            $(".space").removeClass("shadow");
+            $(".time").removeClass("shadow")
+            }
             clickable = true;
         }, 1500);
 
@@ -121,5 +143,6 @@ if (firstCardUrl && secondCardUrl){
     } 
 }
 }
-
 }
+
+

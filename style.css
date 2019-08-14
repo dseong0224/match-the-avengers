@@ -2,20 +2,21 @@ html {
 	box-sizing: border-box;
 }
 header{
-    height: 10%;
-    width: 100%;
+    height: 5%;
     background-color:transparent, rgba(46, 61, 73, 0.5);
-    text-align: center
+    text-align: center;
+    vertical-align: center;
+    margin-bottom: 1%;
 }
 
-/* *,
+*,
 *::before,
 *::after {
 	box-sizing: inherit;
-} */
+}
 
 .container{
-    display: flex;
+    /* display: flex; */
     flex-wrap: wrap;
     flex-direction: row
 }
@@ -37,13 +38,14 @@ body {
 body {
     background: black;
     background-image: url(./assets/images/avengers_endgame_memory_background.jpeg);
-    background-position: center;
+    background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
     font-family: avengers-font,fantasy;
-    text-shadow: 2px 2px white;
-	font-size: 2.5rem;
+    color: white;
+    text-shadow: 8px 5px black;
+	font-size: 2rem;
 }
 
 aside{
@@ -81,8 +83,8 @@ h1 {
 }
 
 .deck .card .back{
-	height: 9.5rem;
-	width: 9.5rem;
+	height: 9rem;
+	width: 9rem;
 	margin: 0.25rem 0.25rem;
 	background: #141214;
 	font-size: 0;
@@ -112,14 +114,13 @@ h1 {
 .front {
     transform: rotateY(180deg);
     backface-visibility: hidden;
-    height: 9.5rem;
-	width: 9.5rem; 
+    height: 9rem;
+	width: 9rem; 
     background-size: cover;
     background-repeat: no-repeat;
     z-index: 0;
     position: absolute;
-
-    background-position: center;
+    background-position: top;
     border-radius: 5px;
 
 }
@@ -130,4 +131,39 @@ h1 {
     transform: rotateY(180deg);
 }
 
+.stats-panel{
+    border: #141214 solid 1px;
+    background-color: rgba(168, 122, 170, 0.7);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-top: 10px;
+    font-size: 2.25rem
+}
 
+.stones-container{
+    display: flex;
+    flex-direction: row;
+    height: 3rem;
+}
+.stone{
+    height: 2.75rem;
+    width: 3rem;
+    background-position: center;
+    background-size: cover;
+    margin-left: 2rem;
+}
+.power{
+    
+    background-image: url(./assets/images/power-stone.png)
+}
+.time{
+    background-image: url(./assets/images/time-stone-in-hand.png)
+}
+.space{
+    background-image: url(./assets/images/space-stone.png)
+}
+.shadow{
+    opacity: 0.2;
+}

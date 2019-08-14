@@ -13,39 +13,23 @@
 <body>
 <header><h2>Match the Avengers</h2></header>
 <div class="container">
-    <!-- <aside class="sidePanel">
-    <div class="sidePanelTitle"><spanTitle>Stats</spanTitle></div>
-    <div class="side gamesPlayedTitle"><span>Games Played</span></div>
-    <div class="side gamesPlayedCount"><span>0</span></div>
-    <div class="side attemptsTitle"><span>Attempts</span></div>
-    <div class="side attemptsCount"><span>0</span></div>
-    <div class="side accuracyTitle"><span>Accuracy</span></div>
-    <div class="side accuracyPercentage"><span>0%</span></div>
-</aside> -->
 <section class="stats-panel">
-        <div class="stones">
-            <div class="infinity"></div>
-            <div class="time"></div>
-            <div class="space"></div>
+        <div class="attempts">Attempts:<span>0</span></div>
+        <div class="stones-container">
+            Score:
+            <div class="power stone shadow"></div>
+            <div class="time stone shadow"></div>
+            <div class="space stone shadow"></div>
         </div>
-
-
-        Attempts<span class="attempts">0</span>
-
-
-        <div class="timer">Timer<span>0</span></div>
-
+        <div class="timer">Timer: <span id="countdown"> 00:60</span></div>
         <div class="restart" onclick=startGame()>
             <div class="infinity-gauntlet"></div>
         </div>
-    </section>
-
+</section>
 <main>
     <div id="card-deck" class="deck"></div>
 </main>
 </div>
-
-
 </body>
 </html>
 
