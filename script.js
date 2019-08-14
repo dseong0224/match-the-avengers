@@ -1,6 +1,6 @@
 $(document).ready(startGame)
 
-const cardsArray = [
+let singleCardsArray = [
     "url(./assets/images/timholland_card.jpg)",
     "url(./assets/images/captain_america_card.jpg)",
     "url(./assets/images/antman_card.jpg)",
@@ -12,154 +12,121 @@ const cardsArray = [
     "url(./assets/images/scarletwitch_card.jpg)",
     "url(./assets/images/vision_card.jpg)",
     "url(./assets/images/shuri_card.jpeg)",
-    "url(./assets/images/captainmarvel_card.jpeg)",
-    "url(./assets/images/hawkeye_card.jpeg)",
+    "url(./assets/images/captainmarvel_card.jpg)",
+    "url(./assets/images/hawkeye_card.jpg)",
     "url(./assets/images/ironmaninsuit_from_poster.png)"
 ]
 
-let shuffledArray = shuffleArray(cardsArray)
+let firstCardUrl = null;
+let secondCardUrl = null;
+let totalMatches = null;
 
-let gameDeck = shuffledArray.slice(0,8)
+let firstCard = null;
+let secondCard = null;
 
-function shuffleArray(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+let clickable = true;
 
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);   
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
+let maxMatches = 9;
+let attempts = 0;
+let games_played = 0;
+
+    function shuffleArray(array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+
+        while (currentIndex !== 0) {
+            randomIndex = Math.floor(Math.random() * currentIndex);   
+            currentIndex -= 1;
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+        return array;
     }
-    return array;
-}
 
-function shuffleCards (cardsArray) {      
-    for (cardIndex = 0; cardIndex < cardsArray.length; cardIndex++ ) {
-        // $(".front:eq("+cardIndex+")").css('background-image', cardsArray[cardIndex]);
-        $(".front:eq("+cardIndex+")").css('background-image', cardsArray[cardIndex]);
-    }    
-}
+    function shuffleCards (cardsArray) { 
+                    
+        for (cardIndex = 0; cardIndex < cardsArray.length; cardIndex++ ) {
+            let cardDiv = $('<div>').addClass('card');
+            let frontDiv = $('<div>').addClass('front').css('background-image', cardsArray[cardIndex])
+            let backDiv = $('<div>').addClass('back');
 
-var firstCardClicked = null;
-var secondCardClicked = null;
-var totalMatches = null;
+            let gameDeck = cardDiv.append(frontDiv,backDiv);
+            $(".deck").append(gameDeck)
+        }    
+    }
 
-var firstCard = null;
-var secondCard = null;
-
-var cardsClickable = true;
-
-var maxMatches = 9;
-var attempts = 0;
-var games_played = 0;
-
+    function setGameTable (){
+        let shuffledSingleCardsArray = shuffleArray(singleCardsArray)
+        let gameSingleDeck = shuffledSingleCardsArray.slice(0,8)
+        gameDoubleDeck = gameSingleDeck.concat(gameSingleDeck);
+        let shuffledDoubleCardsArray = shuffleArray(gameDoubleDeck)
+        let gameCardSet = shuffleCards(shuffledDoubleCardsArray);
+        console.log(gameCardSet)
+        return gameCardSet
+    }
 
     function startGame() {
         $('.card').click(handleCardClick);
+        setGameTable()
         // $('.card').click(displayStats);
     }
 
     function handleCardClick(event) {
 
-    if(!cardsClickable) {
-        return;
-    }
-
-    var clickedCard = $(event.currentTarget);
-
-        clickedCard.find('.card')
-
-        // $(this).find('.back').addClass('hidden');
+        if(clickable) {
+        let clickedCard = $(event.currentTarget);
         clickedCard.toggleClass('isFlipped');
 
-        if (!firstCardClicked && !secondCardClicked) {
-
-            firstCardClicked = clickedCard.find(".front").css('background-image');
-            clickedCard.css('pointer-events', 'none');
-            firstCard = clickedCard;
-    
-            // setTimeout(function(){
-            //     cardsClickable = true;
-            // },1500);
-        
-        } else if (firstCardClicked && !secondCardClicked) {
-
-            secondCard = clickedCard;
-            secondCardClicked = clickedCard.find(".front").css('background-image');
-            clickedCard.css('pointer-events', 'none');
-        
-            
-            if (firstCardClicked && secondCardClicked) {
+            if (!firstCard) {
+                firstCard = clickedCard;
+                firstCardUrl = clickedCard.find(".front").css('background-image');
+                clickedCard.css('pointer-events', 'none');
+            } else if (!secondCard) {
+                secondCard = clickedCard;
+                secondCardUrl = clickedCard.find(".front").css('background-image');
+                clickedCard.css('pointer-events', 'none');
                 attempts++;
-                cardsClickable = false;
-
-                $('.attemptsCount span').text(attempts);
-
-                if (firstCardClicked === secondCardClicked) {
-
-                    firstCard.find('.selectedCardCover').removeClass('hide');
-
-                    secondCard.find('.selectedCardCover').removeClass('hide');
-
-                        if (totalMatches < maxMatches) {
-                            totalMatches += 1;
-                        }
-                        if (totalMatches === maxMatches) {
-
-                            attempts = 0;
-                            totalMatches = 0;
-
-                            $('#modalBody').removeClass("hide");
-
-                            $('.exit').click(function () {
-                                $('#modalBody').addClass("hide");
-                            });
-                            $('.playAgain').click(function () {
-                                $('#modalBody').addClass("hide");
-                                $('.card').find('.back').removeClass('hidden');
-                            });
-                            // attempts = 0;
-                            // totalMatches = 0;
-                            games_played++;
-                            $('.gamesPlayedCount span').text(games_played);
-                            $('div').find('.selectedCardCover').addClass('hide')
-                        }
-
-                        if (firstCardClicked && secondCardClicked) {
-                            firstCardClicked = null; 
-                            secondCardClicked = null;
-                        }
-
-                        setTimeout(function(){
-                            cardsClickable = true;
-                        },1500);
-
-                        } else if (firstCardClicked !== secondCardClicked) {
-                            setTimeout(function () {
-                                firstCard.find(".back").removeClass('hidden');
-                                secondCard.find(".back").removeClass('hidden');
-                                cardsClickable = true;
-                            }, 1500);
-
-                            if (firstCardClicked && secondCardClicked) {
-                                firstCardClicked = null; 
-                                secondCardClicked = null; 
-                            }
-                        }
             }
+
+        if (firstCardUrl && secondCardUrl){
+            if (firstCardUrl !== secondCardUrl) {
+            clickable = false; 
+                setTimeout( function () {
+                    firstCard.toggleClass('isFlipped');
+                    secondCard.toggleClass('isFlipped');
+                    firstCard.css('pointer-events', ''); 
+                    secondCard.css('pointer-events', '');
+                    firstCard = null;
+                    secondCard = null;
+                    firstCardUrl = null;
+                    secondCardUrl = null;
+                    clickable = true; 
+                }, 1500);
+            } else if (firstCardUrl === secondCardUrl) {
+                totalMatches++;
+                firstCard = null;
+                firstCardUrl = null;
+                secondCard = null;
+                secondCardUrl = null;
+                clickable = false;
+                setTimeout( function () {
+                    clickable = true;
+                }, 1500);
+            } else {
+                return
+            } 
+        }
         }
     
+    // function displayStats() {
 
-    function displayStats() {
+    //     function calculateAccuracy(total, divider) {
+    //         return parseInt(total / divider * 100) + "%";
+    //     }
 
-        function calculateAccuracy(total, divider) {
-            return parseInt(total / divider * 100) + "%";
-        }
+    //     var average = calculateAccuracy(totalMatches, attempts);
 
-        var average = calculateAccuracy(totalMatches, attempts);
-
-        $('.accuracyPercentage span').text(average);
-    }
-    displayStats()
+    //     $('.accuracyPercentage span').text(average);
+    // }
+    // displayStats()
     }
