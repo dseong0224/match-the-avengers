@@ -11,9 +11,9 @@
     <title>Memory Match</title>
 </head>
 <body>
-<!-- <header><h1>Match the Avengers</h1></header> -->
-
-<!-- <aside class="sidePanel">
+<header><h2>Match the Avengers</h2></header>
+<div class="container">
+    <!-- <aside class="sidePanel">
     <div class="sidePanelTitle"><spanTitle>Stats</spanTitle></div>
     <div class="side gamesPlayedTitle"><span>Games Played</span></div>
     <div class="side gamesPlayedCount"><span>0</span></div>
@@ -21,81 +21,30 @@
     <div class="side attemptsCount"><span>0</span></div>
     <div class="side accuracyTitle"><span>Accuracy</span></div>
     <div class="side accuracyPercentage"><span>0%</span></div>
-</aside>
-<main> -->
+</aside> -->
+<section class="stats-panel">
+        <div class="stones">
+            <div class="infinity"></<div>
+            <div class="time"></<div>
+            <div class="space"></<div>
+        </div>
 
-    <!-- <div id="modalBody" class="modal hide">
-        <spanOne class="playAgain">NEXT LEVEL</spanOne>
-        <spantwo class="exit">QUIT</spanTwo>
-    </div> -->
+        Attempts<span class="attempts">0</span>
+
+
+        <div class="timer">Timer<span>0</span></div>
+
+        <div class="restart" onclick=startGame()>
+            <i class="infinity-gauntlet"></i>
+        </div>
+    </section>
+
 <main>
-    <div id="card-deck" class="deck">
-        <div class="card">
-            <div class="front"></div>
-            <div class="back"></div>
-        </div>
-        <div class="card">
-            <div class="front"></div>
-            <div class="back"></div>
-        </div>
-        <div class="card">
-            <div class="front"></div>
-            <div class="back"></div>    
-        </div>
-        <div class="card">
-            <div class="front"></div>
-            <div class="back"></div>            
-        </div>
-        <div class="card">
-            <div class="front"></div>
-            <div class="back"></div>           
-        </div>
-        <div class="card">
-            <div class="front"></div>
-            <div class="back"></div>           
-        </div>
-        <div class="card">
-            <div class="front"></div>
-            <div class="back"></div>        
-        </div>
-        <div class="card">
-            <div class="front"></div>
-            <div class="back"></div>          
-        </div>
-        <div class="card">
-            <div class="front"></div>
-            <div class="back"></div>      
-        </div>
-        <div class="card">
-            <div class="front"></div>
-            <div class="back"></div> 
-        </div>
-        <div class="card">
-            <div class="front"></div>
-            <div class="back"></div>   
-        </div>
-        <div class="card">
-            <div class="front"></div>
-            <div class="back"></div>           
-        </div>
-        <div class="card">
-            <div class="front"></div>
-            <div class="back"></div>          
-        </div>
-        <div class="card">
-            <div class="front"></div>
-            <div class="back"></div>         
-        </div>
-        <div class="card">
-            <div class="front"></div>
-            <div class="back"></div>      
-        </div>
-        <div class="card">
-            <div class="front"></div>
-            <div class="back"></div>     
-        </div>
-    </div>
+    <div id="card-deck" class="deck"></div>
 </main>
+</div>
+
+
 </body>
 </html>
 
