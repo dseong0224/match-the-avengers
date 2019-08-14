@@ -43,25 +43,18 @@ let games_played = 0;
         return array;
     }
 
-    function shuffleCards (cardsArray) { 
-                    
+    function shuffleCards (cardsArray) {             
         for (cardIndex = 0; cardIndex < cardsArray.length; cardIndex++ ) {
-            let cardDiv = $('<div>').addClass('card');
-            let frontDiv = $('<div>').addClass('front').css('background-image', cardsArray[cardIndex])
-            let backDiv = $('<div>').addClass('back');
-
-            let gameDeck = cardDiv.append(frontDiv,backDiv);
-            $(".deck").append(gameDeck)
+            $(".front:eq("+cardIndex+")").css('background-image', cardsArray[cardIndex]);
         }    
     }
 
     function setGameTable (){
-        let shuffledSingleCardsArray = shuffleArray(singleCardsArray)
-        let gameSingleDeck = shuffledSingleCardsArray.slice(0,8)
-        gameDoubleDeck = gameSingleDeck.concat(gameSingleDeck);
-        let shuffledDoubleCardsArray = shuffleArray(gameDoubleDeck)
-        let gameCardSet = shuffleCards(shuffledDoubleCardsArray);
-        console.log(gameCardSet)
+        let shuffledArray = shuffleArray(singleCardsArray)
+        let gameDeck = shuffledArray.slice(0,8)
+        gameDeck = gameDeck.concat(gameDeck);
+        console.log(gameDeck)
+        let gameCardSet = shuffleCards(gameDeck);
         return gameCardSet
     }
 
