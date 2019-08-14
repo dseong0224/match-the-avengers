@@ -1,3 +1,4 @@
+
 $(document).ready(startGame)
 
 let singleCardsArray = [
@@ -120,4 +121,5 @@ if (firstCardUrl && secondCardUrl){
     } 
 }
 }
+
 }
