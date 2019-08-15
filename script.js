@@ -30,21 +30,17 @@ let clickable = true;
 let maxMatches = 8;
 let attempts = 0;
 
+let timePassed = 0;
 
-var timeleft = 60;
-var downloadTimer = setInterval(function(){
-  document.getElementById("countdown").innerHTML = "00:"+timeleft;
-  timeleft -= 1;
-  if(timeleft <= 0){
-    clearInterval(downloadTimer);
-    document.getElementById("countdown").innerHTML = "Time Up"
-  }
-}, 1000);
-
-
-
-
-
+function startTimer(){
+    setInterval(function(){
+    $("#countup").text(timePassed);
+    timePassed += 1;
+    if(timePassed === 150){
+        clearInterval(countUp);
+    }
+    }, 1000);
+}
 
 
 function shuffleArray(array) {
@@ -86,26 +82,24 @@ generateCardHolders(gameDeck);
 function startGame() {
 setGameTable()
 $('.card').click(handleCardClick);
-$('.card').click(displayStats);
 }
 
 function handleCardClick(event) {
-
 if(clickable) {
 let clickedCard = $(event.currentTarget);
 clickedCard.toggleClass('isFlipped');
 
-    if (!firstCard) {
-        firstCard = clickedCard;
-        firstCardUrl = clickedCard.find(".front").css('background-image');
-        clickedCard.css('pointer-events', 'none');
-    } else if (!secondCard) {
-        secondCard = clickedCard;
-        secondCardUrl = clickedCard.find(".front").css('background-image');
-        clickedCard.css('pointer-events', 'none');
-        attempts++;
-        $('.attemptsCount span').text(attempts);
-    }
+if (!firstCard) {
+    firstCard = clickedCard;
+    firstCardUrl = clickedCard.find(".front").css('background-image');
+    clickedCard.css('pointer-events', 'none');
+} else if (!secondCard) {
+    secondCard = clickedCard;
+    secondCardUrl = clickedCard.find(".front").css('background-image');
+    clickedCard.css('pointer-events', 'none');
+    attempts++;
+    $('.attempts span').text(attempts);
+}
 
 if (firstCardUrl && secondCardUrl){
     if (firstCardUrl !== secondCardUrl) {
@@ -123,7 +117,6 @@ if (firstCardUrl && secondCardUrl){
         }, 1500);
     } else if (firstCardUrl === secondCardUrl) {
         totalMatches++;
-        
         firstCard = null;
         firstCardUrl = null;
         secondCard = null;
@@ -131,18 +124,37 @@ if (firstCardUrl && secondCardUrl){
         clickable = false;
         setTimeout( function () {
             if(totalMatches === 8){
-            $(".power").removeClass("shadow");
-            $(".space").removeClass("shadow");
-            $(".time").removeClass("shadow")
+                if (timePassed < 60){
+                    $(".space").removeClass("shadow");
+                    $(".power").removeClass("shadow");
+                    $(".time").removeClass("shadow");
+                } else if(timePassed < 90){
+                    $(".space").removeClass("shadow");
+                    $(".power").removeClass("shadow");
+                } else if (timePassed < 120){
+                    $(".space").removeClass("shadow");
+                } else {
+                    return;
+                }
             }
             clickable = true;
         }, 1500);
 
     } else {
         return
-    } 
+    }
 }
 }
+}
+
+function restartGame(){
+    totalMatches = null;
+    attempts = 0;
+    $('.attempts span').text(attempts);
+    timePassed = 0;
+    $('.card').removeClass('isFlipped');
+    $('.card').css('pointer-events', '');
+    console.log('restarted')
 }
 
 
