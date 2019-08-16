@@ -6,14 +6,12 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-    <script src="script.js"></script>
+    <script type="text/javascript" src="script.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Memory Match</title>
 </head>
 <body>
-<!-- <audio class="cardhover" controls>
-        <source src="./assets/images/audio/cardhover.mp3" controls></source>
-</audio> -->
+
 <header>
     <div class="iron-man-display"></div>
     <h2>Match &nbsp; the &nbsp; Avengers</h2>
@@ -21,6 +19,7 @@
 </header>
 
 <main>
+    <div id="popup" class="modal"></div>
     <section class="left panel">
         <div class="attempts">Attempts</div><span class="attempts-count">0</span>
         <div class="babyGroot" onclick=startTimer()></div>
@@ -42,5 +41,23 @@
 </main>
 
 </body>
+<audio class="cardhover" controls preload="auto">
+        <source src="./assets/images/audio/cardhover.mp3" controls></source>
+</audio>
+<audio class="background" controls preload="auto">
+        <source src="./assets/images/audio/02 All The Stars.m4a" type="audio/ogg"></source>
+</audio>
+
+<!-- <audio autoplay loop>
+        <source src="./assets/images/audio/02 All The Stars.m4a">
+  </audio> -->
+
+  
+
+
+
+
+
+
 </html>
 

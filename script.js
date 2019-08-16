@@ -30,19 +30,14 @@ let clickable = true;
 let maxMatches = 8;
 let attempts = 0;
 
-let timePassed = 0;
-
 let counter;
+let timePassed = 0;
 
 function startTimer(){
     counter = setInterval(function(){
     $("#countup").text(timePassed + "  sec");
     timePassed += 1;
     }, 1000);
-
-    // if(timePassed === 150 || totalMatches === 8){
-    //     clearInterval(counter);
-    // }
 }
 
 function shuffleArray(array) {
@@ -78,86 +73,100 @@ function setGameTable (){
 function startGame() {
 setGameTable()
 $('.card').click(handleCardClick);
+
+$(".background")[0].play();
+
+let cardHoverSoundEffect = $(".cardhover")[0];
+$(".card").click(function() {
+    cardHoverSoundEffect.play();
+});
 }
 
 function handleCardClick(event) {
+
 if(clickable) {
-let clickedCard = $(event.currentTarget);
-clickedCard.toggleClass('isFlipped');
+    let clickedCard = $(event.currentTarget);
+    clickedCard.toggleClass('isFlipped');
 
-if (!firstCard) {
-    firstCard = clickedCard;
-    firstCardUrl = clickedCard.find(".front").css('background-image');
-    clickedCard.css('pointer-events', 'none');
-} else if (!secondCard) {
-    secondCard = clickedCard;
-    secondCardUrl = clickedCard.find(".front").css('background-image');
-    clickedCard.css('pointer-events', 'none');
-    attempts++;
-    $('.attempts span').text(attempts);
-}
-
-if (firstCardUrl && secondCardUrl){
-    if (firstCardUrl !== secondCardUrl) {
-    clickable = false; 
-        setTimeout( function () {
-            firstCard.toggleClass('isFlipped');
-            secondCard.toggleClass('isFlipped');
-            firstCard.css('pointer-events', ''); 
-            secondCard.css('pointer-events', '');
-            firstCard = null;
-            secondCard = null;
-            firstCardUrl = null;
-            secondCardUrl = null;
-            clickable = true; 
-        }, 1500);
-    } else if (firstCardUrl === secondCardUrl) {
-        totalMatches++;
-        firstCard = null;
-        firstCardUrl = null;
-        secondCard = null;
-        secondCardUrl = null;
-        clickable = false;
-        setTimeout( function () {
-            if(timePassed === 150 || totalMatches === 8){
-                clearInterval(counter);
-            }
-            ratePlayer();
-            clickable = true;
-        }, 1500);
-
-    } else {
-        return
+    if (!firstCard) {
+        firstCard = clickedCard;
+        firstCardUrl = clickedCard.find(".front").css('background-image');
+        clickedCard.css('pointer-events', 'none');
+    } else if (!secondCard) {
+        secondCard = clickedCard;
+        secondCardUrl = clickedCard.find(".front").css('background-image');
+        clickedCard.css('pointer-events', 'none');
+        attempts++;
+        $('.attempts-count').text(attempts);
     }
-}
+
+    if (firstCardUrl && secondCardUrl){
+        if (firstCardUrl !== secondCardUrl) {
+        clickable = false; 
+            setTimeout( function () {
+                firstCard.toggleClass('isFlipped');
+                secondCard.toggleClass('isFlipped');
+                firstCard.css('pointer-events', ''); 
+                secondCard.css('pointer-events', '');
+                firstCard = null;
+                secondCard = null;
+                firstCardUrl = null;
+                secondCardUrl = null;
+                clickable = true; 
+            }, 1500);
+        } else if (firstCardUrl === secondCardUrl) {
+            totalMatches++;
+            firstCard = null;
+            firstCardUrl = null;
+            secondCard = null;
+            secondCardUrl = null;
+            clickable = false;
+            setTimeout( function () {
+                ratePlayer();
+                if(timePassed === 150 || totalMatches === 8){
+                    clearInterval(counter);
+                }
+                clickable = true;
+            }, 1500);
+
+        } else {
+            return
+        }
+    }
 }
 }
 
 function restartGame(){
     totalMatches = null;
     attempts = 0;
-    $('.attempts span').text(attempts);
+    
+    clearInterval(counter);
     timePassed = 0;
+    $("#countup").text("ready...");
+    $('.attempts-count').text(attempts);
     $('.card').removeClass('isFlipped');
     $('.card').css('pointer-events', '');
-    console.log('restarted')
+
+    $(".space").addClass("shadow");
+    $(".power").addClass("shadow");
+    $(".time").addClass("shadow");
 }
 
 function ratePlayer(){
     if(totalMatches === 8){
-                if (timePassed < 60){
-                    $(".space").removeClass("shadow");
-                    $(".power").removeClass("shadow");
-                    $(".time").removeClass("shadow");
-                } else if(timePassed < 90){
-                    $(".space").removeClass("shadow");
-                    $(".power").removeClass("shadow");
-                } else if (timePassed < 120){
-                    $(".space").removeClass("shadow");
-                } else {
-                    return;
-                }
-            }
+        if (timePassed < 60){
+            $(".space").removeClass("shadow");
+            $(".power").removeClass("shadow");
+            $(".time").removeClass("shadow");
+        } else if(timePassed < 90){
+            $(".space").removeClass("shadow");
+            $(".power").removeClass("shadow");
+        } else if (timePassed < 120){
+            $(".space").removeClass("shadow");
+        } else {
+            return;
+        }
+    }
 }
 
 
