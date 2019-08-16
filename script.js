@@ -2,20 +2,20 @@
 $(document).ready(startGame)
 
 let singleCardsArray = [
-    "url(./assets/images/timholland_card.jpg)",
-    "url(./assets/images/captain_america_card.jpg)",
-    "url(./assets/images/antman_card.jpg)",
-    "url(./assets/images/hulk_card.jpg)",
-    "url(./assets/images/ironmaninsuit_card.png)",
-    "url(./assets/images/thor_card.jpg)",
-    "url(./assets/images/drstrange_card.jpeg)",
-    "url(./assets/images/blackwidow_card.jpg)",
-    "url(./assets/images/scarletwitch_card.jpg)",
-    "url(./assets/images/vision_card.jpg)",
-    "url(./assets/images/shuri_card.jpeg)",
-    "url(./assets/images/captainmarvel_card.jpg)",
-    "url(./assets/images/hawkeye_card.jpg)",
-    "url(./assets/images/ironmaninsuit_from_poster.png)"
+    "url(./assets/images/cards/timholland_card.jpg)",
+    "url(./assets/images/cards/captain_america_card.jpg)",
+    "url(./assets/images/cards/antman_card.jpg)",
+    "url(./assets/images/cards/hulk_card.jpg)",
+    "url(./assets/images/cards/ironmaninsuit_card.png)",
+    "url(./assets/images/cards/thor_card.jpg)",
+    "url(./assets/images/cards/drstrange_card.jpeg)",
+    "url(./assets/images/cards/blackwidow_card.jpg)",
+    "url(./assets/images/cards/scarletwitch_card.jpg)",
+    "url(./assets/images/cards/vision_card.jpg)",
+    "url(./assets/images/cards/shuri_card.jpeg)",
+    "url(./assets/images/cards/captainmarvel_card.jpg)",
+    "url(./assets/images/cards/hawkeye_card.jpg)",
+    "url(./assets/images/cards/ironmaninsuit_from_poster.png)"
 ]
 
 let firstCardUrl = null;
@@ -32,37 +32,33 @@ let attempts = 0;
 
 let timePassed = 0;
 
-function startTimer(){
-    setInterval(function(){
-    $("#countup").text(timePassed);
-    timePassed += 1;
-    if(timePassed === 150){
-        clearInterval(countUp);
-    }
-    }, 1000);
-}
+let counter;
 
+function startTimer(){
+    counter = setInterval(function(){
+    $("#countup").text(timePassed + "  sec");
+    timePassed += 1;
+    }, 1000);
+
+    // if(timePassed === 150 || totalMatches === 8){
+    //     clearInterval(counter);
+    // }
+}
 
 function shuffleArray(array) {
-var currentIndex = array.length, temporaryValue, randomIndex;
+    var currentIndex = array.length, temporaryValue, randomIndex;
 
-while (currentIndex !== 0) {
-    randomIndex = Math.floor(Math.random() * currentIndex);   
-    currentIndex -= 1;
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-}
-return array;
+    while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);   
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+    return array;
 }
 
-function shuffleCards (cardsArray) {             
-for (cardIndex = 0; cardIndex < cardsArray.length; cardIndex++ ) {
-    $(".front:eq("+cardIndex+")").css('background-image', cardsArray[cardIndex]);
-}    
-}
 function generateCardHolders(cardsArray){
-                
     for (cardIndex = 0; cardIndex < cardsArray.length; cardIndex++ ) {
         let cardDiv = $('<div>').addClass('card');
         let frontDiv = $('<div>').addClass('front').css('background-image', cardsArray[cardIndex])
@@ -72,11 +68,11 @@ function generateCardHolders(cardsArray){
     }    
 }
 function setGameTable (){
-let shuffledArray = shuffleArray(singleCardsArray)
-let gameDeck = shuffledArray.slice(0,8);
-gameDeck = gameDeck.concat(gameDeck);
-gameDeck = shuffleArray(gameDeck);
-generateCardHolders(gameDeck);
+    let shuffledArray = shuffleArray(singleCardsArray)
+    let gameDeck = shuffledArray.slice(0,8);
+    gameDeck = gameDeck.concat(gameDeck);
+    gameDeck = shuffleArray(gameDeck);
+    generateCardHolders(gameDeck);
 }
 
 function startGame() {
@@ -123,20 +119,10 @@ if (firstCardUrl && secondCardUrl){
         secondCardUrl = null;
         clickable = false;
         setTimeout( function () {
-            if(totalMatches === 8){
-                if (timePassed < 60){
-                    $(".space").removeClass("shadow");
-                    $(".power").removeClass("shadow");
-                    $(".time").removeClass("shadow");
-                } else if(timePassed < 90){
-                    $(".space").removeClass("shadow");
-                    $(".power").removeClass("shadow");
-                } else if (timePassed < 120){
-                    $(".space").removeClass("shadow");
-                } else {
-                    return;
-                }
+            if(timePassed === 150 || totalMatches === 8){
+                clearInterval(counter);
             }
+            ratePlayer();
             clickable = true;
         }, 1500);
 
@@ -156,5 +142,23 @@ function restartGame(){
     $('.card').css('pointer-events', '');
     console.log('restarted')
 }
+
+function ratePlayer(){
+    if(totalMatches === 8){
+                if (timePassed < 60){
+                    $(".space").removeClass("shadow");
+                    $(".power").removeClass("shadow");
+                    $(".time").removeClass("shadow");
+                } else if(timePassed < 90){
+                    $(".space").removeClass("shadow");
+                    $(".power").removeClass("shadow");
+                } else if (timePassed < 120){
+                    $(".space").removeClass("shadow");
+                } else {
+                    return;
+                }
+            }
+}
+
 
 

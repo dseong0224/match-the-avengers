@@ -11,27 +11,36 @@
     <title>Memory Match</title>
 </head>
 <body>
-<header><h2>Match &nbsp; the &nbsp; Avengers</h2></header>
-<div class="container">
-<section class="stats-panel">
-        <div class="attempts">Attempts &nbsp;: &nbsp;<span>&nbsp;0</span></div>
+<!-- <audio class="cardhover" controls>
+        <source src="./assets/images/audio/cardhover.mp3" controls></source>
+</audio> -->
+<header>
+    <div class="iron-man-display"></div>
+    <h2>Match &nbsp; the &nbsp; Avengers</h2>
+    <div class="blackpanther"></div>
+</header>
+
+<main>
+    <section class="left panel">
+        <div class="attempts">Attempts</div><span class="attempts-count">0</span>
+        <div class="babyGroot" onclick=startTimer()></div>
+        <div class="timer">Timer</div>
+        <span id="countup">ready...</span>  
+    </section>
+    <div id="card-deck" class="deck"><div class="spider-man-cameo"></div></div>
+    <section class="right panel">
         <div class="stones-container">
-            Score &nbsp; :
+            Rating
             <div class="space stone shadow"></div>
             <div class="power stone shadow"></div>
             <div class="time stone shadow"></div>  
         </div>
-        <div class="timer">Timer &nbsp; : <div class="babyGroot" onclick=startTimer()></div> &nbsp;<span id="countup">ready...</span></div>
         <div class="restart" onclick=restartGame()>
-            <span>Restart &nbsp;</span><div class="gauntlet"></div>
+            <span>Restart</span><div class="gauntlet"></div>
         </div>
-</section>
-<main>
-    <div class="iron-man-display"></div>
-    <div id="card-deck" class="deck"><div class="spider-man-cameo"></div></div>
-    <div></div>
+    </section>
 </main>
-</div>
+
 </body>
 </html>
 
