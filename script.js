@@ -1,7 +1,4 @@
-
-$(document).ready(startGame)
-
-let singleCardsArray = [
+let levelOneCardsArray = [
     "url(./assets/images/cards/timholland_card.jpg)",
     "url(./assets/images/cards/captain_america_card.jpg)",
     "url(./assets/images/cards/antman_card.jpg)",
@@ -17,6 +14,13 @@ let singleCardsArray = [
     "url(./assets/images/cards/hawkeye_card.jpg)",
     "url(./assets/images/cards/ironmaninsuit_from_poster.png)"
 ]
+
+let levelTwoCardsArray = [];
+let levelThreeCardsArray = [];
+let levelFourCardsArray = [];
+let levelFiveCardsArray = [];
+
+
 
 let firstCardUrl = null;
 let secondCardUrl = null;
@@ -56,30 +60,43 @@ function shuffleArray(array) {
 function generateCardHolders(cardsArray){
     for (cardIndex = 0; cardIndex < cardsArray.length; cardIndex++ ) {
         let cardDiv = $('<div>').addClass('card');
-        let frontDiv = $('<div>').addClass('front').css('background-image', cardsArray[cardIndex])
+        let frontDiv = $('<div>').addClass('front').css('background-image', cardsArray[cardIndex]);
         let backDiv = $('<div>').addClass('back');
         let gameDeck = cardDiv.append(frontDiv,backDiv);
-        $(".deck").append(gameDeck)
+        $(".deck").append(gameDeck);
     }    
 }
 function setGameTable (){
-    let shuffledArray = shuffleArray(singleCardsArray)
+    let shuffledArray = shuffleArray(levelOneCardsArray);
     let gameDeck = shuffledArray.slice(0,8);
     gameDeck = gameDeck.concat(gameDeck);
     gameDeck = shuffleArray(gameDeck);
     generateCardHolders(gameDeck);
 }
 
+function playAudio(){
+    let cardClickSoundEffect = $(".mouse-action")[0];
+    $(".background-music")[0].play();
+    
+    $(".card").click(function() {
+        cardClickSoundEffect.play();
+    });
+    $(".levelup-button").mouseenter(function() {
+        cardClickSoundEffect.play();
+    })
+    $(".close").mouseenter(function() {
+        cardClickSoundEffect.play();
+    });
+}
+
 function startGame() {
 setGameTable()
-$('.card').click(handleCardClick);
+$(".card").click(handleCardClick);
+playAudio();
+}
 
-$(".background")[0].play();
-
-let cardHoverSoundEffect = $(".cardhover")[0];
-$(".card").click(function() {
-    cardHoverSoundEffect.play();
-});
+function hideStartModal(){
+    $("#play-button-shadow").addClass('hide')
 }
 
 function handleCardClick(event) {
@@ -122,10 +139,7 @@ if(clickable) {
             secondCardUrl = null;
             clickable = false;
             setTimeout( function () {
-                ratePlayer();
-                if(timePassed === 150 || totalMatches === 8){
-                    clearInterval(counter);
-                }
+                finishGame()
                 clickable = true;
             }, 1500);
 
@@ -136,12 +150,42 @@ if(clickable) {
 }
 }
 
+function finishGame(){
+    if(timePassed === 150 ){
+        $(".modal-attempts").text("You  made "+ attempts + " attempts");
+        $(".modal-time").text(" in " + timePassed + " seconds");
+        $(".modal-score-title").append($(".modal-score"));
+        clearInterval(counter);
+        ratePlayer();
+        openModal();
+    }
+    if(totalMatches === 8){
+        $(".modal-attempts").text("You  made "+ attempts + " attempts");
+        $(".modal-time").text(" in " + timePassed + " seconds");
+        console.log("counter: ", counter)
+        $(".modal-score-title").append($(".modal-score"));
+        clearInterval(counter);
+        ratePlayer();
+        openModal();
+    }
+}
+
+function openModal(){
+    $("#popup").removeClass("hide");
+
+}
+
+function closeModal(){
+    $("#popup").addClass('hide')
+}
+
 function restartGame(){
     totalMatches = null;
     attempts = 0;
     
     clearInterval(counter);
     timePassed = 0;
+    startTimer()
     $("#countup").text("ready...");
     $('.attempts-count').text(attempts);
     $('.card').removeClass('isFlipped');
@@ -150,6 +194,7 @@ function restartGame(){
     $(".space").addClass("shadow");
     $(".power").addClass("shadow");
     $(".time").addClass("shadow");
+    closeModal();
 }
 
 function ratePlayer(){

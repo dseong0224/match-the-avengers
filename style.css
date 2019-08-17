@@ -178,6 +178,7 @@ main {
     width: 4rem;
     background-position: center;
     background-size: contain;
+    background-repeat: no-repeat;
     margin: auto;
 }
 .power{
@@ -201,7 +202,6 @@ main {
 .gauntlet{
     height: 7rem;
     width: 7rem;
-    /* margin-top: -30%; */
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -221,7 +221,7 @@ main {
 
 .spider-man-cameo{
     position: absolute;
-    z-index: 10;
+    z-index: 1;
     pointer-events: none;
     height: 20rem;
     width: 30rem;
@@ -252,18 +252,120 @@ main {
 }
 
 .cardhover {display: none;}
-/* audio {display: none;} */
 
-/* #popup {
+audio {display: none;}
+
+#popup {
     position: fixed;
-    z-index: 1;
-    width: 50%;
-    height: 50%;
-    overflow: auto;
-    background-color: black;
-    background-image: url("./assets/images/marvel_modal_background.jpg");
+    z-index: 2;
+    height: 50vh;
+    width: 80vh;
+    font-size: 2rem;
+    color: black;
+    text-shadow: 5px 3px rgb(255, 255, 255);
+    background-color: rgba(181, 240, 20, 0.9);
     background-position: center;
     background-size: contain;
+    padding-top: 5%;
     margin: auto;
-    transform: translate(-50%, -50%);
-} */
+    box-shadow:  10px 15px 40px 0 rgba(181, 240, 20, 0.7);
+    border: solid 3px white;
+    transition: all 200ms;
+}
+
+.modal-score {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 5rem;
+}
+
+.modal-stone {
+    height: 4rem;
+    width: 4rem;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 2%;
+    margin-left: 2%;
+}
+
+.game-summary li {
+    margin-bottom: 2%;
+}
+
+.hide{
+    visibility: hidden;
+    transform:scale(0);
+    transition: all 0.5s;
+
+}
+.levelup-button {
+    font-size: 2rem;
+    transition: transform .2s;
+}
+.levelup-button:hover {
+    cursor: pointer;
+    font-size: 2.5rem;
+}
+#popup .close {
+    cursor: pointer;
+	position: absolute;
+	top: 5px;
+	right: 10px;
+    font-family: fantasy;
+    text-shadow: 1px 1px rgb(255, 255, 255);
+	font-size: 2rem;
+	font-weight: bold;
+    color: #333;
+    transition: transform .2s;
+}
+#popup .close:hover {
+    color: #E5F720;
+    transform: scale(1.25);
+}
+#play-button-shadow {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(160, 149, 200, 0.2);
+}
+#play-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 80%;
+    width: 60%;
+    border: #E5F720 solid 3px;
+    border-radius: 10px;
+    background: rgba(15, 5, 49, 0.8);
+}
+.play-button {
+    position: absolute;
+    z-index: 3;
+    cursor: pointer;
+    height: 5rem;
+    width: 8rem;
+    border: white solid 5px;
+    border-radius: 50px;
+    background-color: rgb(27, 205, 250);
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+.play-button:hover {
+    color: #E5F720;
+    transform: scale(1.25);
+}
+.play-button span {
+    display: flex;
+}
+#game-preview {
+    display: flex;
+    justify-content: start;
+}
