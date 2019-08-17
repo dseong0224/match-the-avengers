@@ -115,6 +115,7 @@ main {
     transform: rotateY(180deg);
 }
 .panel{
+    height: 80vh;
     width: 10%;
     border: white solid 3px;
     box-shadow: 25px 25px 25px 0 rgba(255, 35, 244, 0.7);
@@ -329,7 +330,7 @@ audio {display: none;}
     display: flex;
     justify-content: center;
     z-index: 2;
-    height: 100vh;
+    height: 90vh;
     width: 100vw;
     background-color: rgba(160, 149, 200, 0.2);
 }
@@ -338,8 +339,8 @@ audio {display: none;}
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 80%;
-    width: 60%;
+    height: 80vh;
+    width: 100vw;
     border: #E5F720 solid 3px;
     border-radius: 10px;
     background: rgba(15, 5, 49, 0.8);
