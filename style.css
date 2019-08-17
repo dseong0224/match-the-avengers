@@ -1,30 +1,22 @@
 html {
-	box-sizing: border-box;
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100vw;
+    text-align: center
 }
 header{
     height: 10%;
-    width: 100%;
-    background-color:transparent, rgba(46, 61, 73, 0.5);
-    text-align: center
-}
-
-/* *,
-*::before,
-*::after {
-	box-sizing: inherit;
-} */
-
-.container{
+    background-color:transparent, rgba(46, 61, 73, 0.9);
+    margin-bottom: 3%;
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row
+    justify-content: center
 }
 
 html,
 body {
     display: inline-block;
-	width: 100vw;
-	height: 100vh;
+	width: 100%;
+	height: 100%;
 	margin: 0;
 	padding: 0;
 }
@@ -36,14 +28,14 @@ body {
 
 body {
     background: black;
-    background-image: url(./assets/images/avengers_endgame_memory_background.jpeg);
-    background-position: center;
+    background-image: url(./assets/images/futuristic\ background.jpg);
+    background-position: top;
     background-size: cover;
-    background-repeat: no-repeat;
     height: 100%;
     font-family: avengers-font,fantasy;
-    text-shadow: 2px 2px white;
-	font-size: 2.5rem;
+    color: white;
+    text-shadow: 5px 3px rgb(87, 8, 81);
+	font-size: 2rem;
 }
 
 aside{
@@ -54,26 +46,20 @@ aside{
 }
 
 main {
-    position: absolute;
 	display: flex;
 	justify-content: center;
-	align-items: center;
-    flex-direction: column;
-}
-
-h1 {
-    text-align: center;
+    flex-direction: row;
 }
 
 .deck {
-	width: 50%;
+    width: 50vw;
     background: #716F71;
-    background-image: url(./assets/images/gifs/blue\ energy.gif);
+    background-image: url(./assets/images/gifs&png/sikcing-gif.gif);
     background-position: center;
     background-size: cover;
 	padding: 0.5rem;
 	border-radius: 5px;
-	box-shadow: 10px 10px 10px 0 rgba(46, 61, 73, 0.5);
+	box-shadow: 0px 0px 70px 10px rgb(255, 255, 255, 0.9);
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
@@ -81,13 +67,13 @@ h1 {
 }
 
 .deck .card .back{
-	height: 9.5rem;
-	width: 9.5rem;
+	height: 9rem;
+	width: 9rem;
 	margin: 0.25rem 0.25rem;
 	background: #141214;
 	font-size: 0;
     color: #ffffff;
-    background-image: url(./assets/images/avengers_logo.jpg);
+    background-image: url(./assets/images/cards/avengers_logo.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -100,7 +86,7 @@ h1 {
 }
 
 .card:hover{
-    background-color: white;
+    background-color: rgb(74, 248, 83);
     opacity: 0.7;
 }
 
@@ -112,14 +98,13 @@ h1 {
 .front {
     transform: rotateY(180deg);
     backface-visibility: hidden;
-    height: 9.5rem;
-	width: 9.5rem; 
+    height: 9rem;
+	width: 9rem; 
     background-size: cover;
     background-repeat: no-repeat;
     z-index: 0;
     position: absolute;
-
-    background-position: center;
+    background-position: top;
     border-radius: 5px;
 
 }
@@ -129,5 +114,258 @@ h1 {
 .isFlipped {
     transform: rotateY(180deg);
 }
+.panel{
+    width: 10%;
+    border: white solid 3px;
+    box-shadow: 25px 25px 25px 0 rgba(255, 35, 244, 0.7);
+    background-color: rgba(168, 122, 170, 0.7);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    color: black;
+    text-shadow: 3px 2px white;
+    font-size: 1.5rem;
+    margin-inline-end: 5%;
+    margin-inline-start: 5%
+}
 
 
+/* left panel */
+.left{
+    justify-content: flex-start;
+}
+
+.attempts{
+    margin-top: 40%;
+    margin-bottom: 10%;
+}
+.attempts-count{
+    margin-bottom: 60%;
+}
+
+.babyGroot{
+    cursor: pointer;
+    height: 15rem;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(./assets/images/gifs&png/groot-gif.gif)
+}
+
+.timer {
+    display: inline-block;
+    margin-top: 10%;
+}
+#countup {
+    margin-top: 30%;
+}
+
+/* right panel */
+.right{
+    justify-content: flex-end;  
+}
+
+/* rating */
+.stones-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 65%;
+}
+.stone{
+    display: flex;
+    height: 4rem;
+    width: 4rem;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: auto;
+}
+.power{
+    background-image: url(./assets/images/stones/power-stone.png);
+}
+.time{
+    background-image: url(./assets/images/stones/time-stone-in-hand.png);
+}
+.space{
+    background-image: url(./assets/images/stones/space-stone.png);
+}
+.shadow{
+    opacity: 0.2;
+}
+
+/* restart button */
+.restart{
+    display: flex;
+    flex-direction: column;
+}
+.gauntlet{
+    height: 7rem;
+    width: 7rem;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(./assets/images/gifs&png/infinity-gauntlet.png)
+}
+.gauntlet:hover{
+    cursor: pointer;
+    background-color: rgba(243, 72, 234, 0.1);
+    border-radius: 10%;
+    height: 10rem;
+    width: 10rem;
+    margin-top: -30%;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.spider-man-cameo{
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    height: 20rem;
+    width: 30rem;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(./assets/images/gifs&png/spiderman-with-web-gif.gif)
+}
+.iron-man-display{
+    display: flex;
+    float: left;
+    height: 6rem;
+    width: 6rem;
+    background-position: bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(./assets/images/gifs&png/rotating-ironman-gif.gif);
+}
+.blackpanther{
+    display: flex;
+    float: right;
+    height: 6rem;
+    width: 6rem;
+    background-position: bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(./assets/images/gifs&png/jumping-black-panther.png);
+}
+
+.cardhover {display: none;}
+
+audio {display: none;}
+
+#popup {
+    position: fixed;
+    z-index: 2;
+    height: 50vh;
+    width: 80vh;
+    font-size: 2rem;
+    color: black;
+    text-shadow: 5px 3px rgb(255, 255, 255);
+    background-color: rgba(181, 240, 20, 0.9);
+    background-position: center;
+    background-size: contain;
+    padding-top: 5%;
+    margin: auto;
+    box-shadow:  10px 15px 40px 0 rgba(181, 240, 20, 0.7);
+    border: solid 3px white;
+    transition: all 200ms;
+}
+
+.modal-score {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 5rem;
+}
+
+.modal-stone {
+    height: 4rem;
+    width: 4rem;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 2%;
+    margin-left: 2%;
+}
+
+.game-summary li {
+    margin-bottom: 2%;
+}
+
+.hide{
+    visibility: hidden;
+    transform:scale(0);
+    transition: all 0.5s;
+
+}
+.levelup-button {
+    font-size: 2rem;
+    transition: transform .2s;
+}
+.levelup-button:hover {
+    cursor: pointer;
+    font-size: 2.5rem;
+}
+#popup .close {
+    cursor: pointer;
+	position: absolute;
+	top: 5px;
+	right: 10px;
+    font-family: fantasy;
+    text-shadow: 1px 1px rgb(255, 255, 255);
+	font-size: 2rem;
+	font-weight: bold;
+    color: #333;
+    transition: transform .2s;
+}
+#popup .close:hover {
+    color: #E5F720;
+    transform: scale(1.25);
+}
+#play-button-shadow {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(160, 149, 200, 0.2);
+}
+#play-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 80%;
+    width: 60%;
+    border: #E5F720 solid 3px;
+    border-radius: 10px;
+    background: rgba(15, 5, 49, 0.8);
+}
+.play-button {
+    position: absolute;
+    z-index: 3;
+    cursor: pointer;
+    height: 5rem;
+    width: 8rem;
+    border: white solid 5px;
+    border-radius: 50px;
+    background-color: rgb(27, 205, 250);
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+.play-button:hover {
+    color: #E5F720;
+    transform: scale(1.25);
+}
+.play-button span {
+    display: flex;
+}
+#game-preview {
+    display: flex;
+    justify-content: start;
+}

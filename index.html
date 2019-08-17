@@ -6,46 +6,74 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-    <script src="script.js"></script>
+    <script type="text/javascript" src="script.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Memory Match</title>
 </head>
 <body>
-<header><h2>Match the Avengers</h2></header>
-<div class="container">
-    <!-- <aside class="sidePanel">
-    <div class="sidePanelTitle"><spanTitle>Stats</spanTitle></div>
-    <div class="side gamesPlayedTitle"><span>Games Played</span></div>
-    <div class="side gamesPlayedCount"><span>0</span></div>
-    <div class="side attemptsTitle"><span>Attempts</span></div>
-    <div class="side attemptsCount"><span>0</span></div>
-    <div class="side accuracyTitle"><span>Accuracy</span></div>
-    <div class="side accuracyPercentage"><span>0%</span></div>
-</aside> -->
-<section class="stats-panel">
-        <div class="stones">
-            <div class="infinity"></div>
-            <div class="time"></div>
-            <div class="space"></div>
-        </div>
 
-
-        Attempts<span class="attempts">0</span>
-
-
-        <div class="timer">Timer<span>0</span></div>
-
-        <div class="restart" onclick=startGame()>
-            <div class="infinity-gauntlet"></div>
-        </div>
-    </section>
+<header>
+    <div class="iron-man-display"></div>
+    <h2>Match &nbsp; the &nbsp; Avengers</h2>
+    <div class="blackpanther"></div>
+</header>
 
 <main>
-    <div id="card-deck" class="deck"></div>
-</main>
-</div>
 
+    <div id="popup" class="modal_shadow hide">
+        <a class="close" onclick=closeModal()>x</a>
+        <span class="win">You're getting the hang of it!</span>
+        <ul class="game-summary" style="list-style-type:none;">
+            <li class="modal-attempts">Attempts</li>
+            <li class="modal-time">Time</li>
+            <li class="modal-score-title">Score</li>
+            <li class="modal-score">
+                <div class="space modal-stone shadow"></div>
+                <div class="power modal-stone shadow"></div>
+                <div class="time modal-stone shadow"></div>
+            </li>
+        </ul>
+        <span class="levelup-button" onclick=restartGame()>Next Round</span>
+    </div>
+
+    <section class="left panel">
+        <div class="attempts">Attempts</div><span class="attempts-count">0</span>
+        <div class="babyGroot"></div>
+        <div class="timer">Timer</div>
+        <span id="countup">ready...</span>  
+    </section>
+    <div id="card-deck" class="deck">
+        <div class="spider-man-cameo"></div>
+    </div>
+    <div id="play-button-shadow">
+        <div id="play-button-container">
+            <p>"Match the Avengers" is a digital memory match game</p>
+            <p>The clip below is a preview of how the game plays</p>
+            <img id="game-preview" src="./assets/images/video/ezgif.com-gif-maker.gif"/>
+            <div class="play-button" onClick="startGame(),startTimer(),hideStartModal()">
+                <span>Play</span>
+            </div>
+        </div>
+    </div>
+    <section class="right panel">
+        <div class="stones-container">
+            Score
+            <div class="space stone shadow"></div>
+            <div class="power stone shadow"></div>
+            <div class="time stone shadow"></div>  
+        </div>
+        <div class="restart" onclick=restartGame()>
+            <span>Restart</span><div class="gauntlet"></div>
+        </div>
+    </section>
+</main>
 
 </body>
+<audio class="mouse-action" controls preload="auto">
+        <source src="./assets/images/audio/cardhover.mp3" controls></source>
+</audio>
+<audio class="background-music" controls preload="auto">
+        <source src="./assets/images/audio/02 All The Stars.m4a" type="audio/ogg"></source>
+</audio>
 </html>
 
