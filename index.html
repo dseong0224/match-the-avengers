@@ -11,11 +11,23 @@
     <title>Memory Match</title>
 </head>
 <body>
-
+<div id="play-button-shadow">
+        <div id="play-button-container">
+            <p>"Match the Avengers" is a digital memory match game <br><br>
+                The clip below is a preview of how the game plays</p>
+            <div id="preview_button_container">
+                <img id="game-preview" src="./assets/images/video/ezgif.com-gif-maker.gif"/>
+                <div class="play-button" onClick="startGame(),startTimer(),hideStartModal()">
+                    <span>Play</span>
+                </div>
+            </div>
+            
+        </div>
+    </div>
 <header>
-    <div class="iron-man-display"></div>
-    <h2>Match &nbsp; the &nbsp; Avengers</h2>
-    <div class="blackpanther"></div>
+    <div class="iron-man display"></div>
+    <div id="title"><div>Match &nbsp; the &nbsp; Avengers</div></div>
+    <div class="blackpanther display"></div>
 </header>
 
 <main>
@@ -43,27 +55,19 @@
         <span id="countup">ready...</span>  
     </section>
     <div id="card-deck" class="deck">
-        <div class="spider-man-cameo"></div>
+        <!-- <div class="spider-man-cameo"></div> -->
     </div>
-    <div id="play-button-shadow">
-        <div id="play-button-container">
-            <p>"Match the Avengers" is a digital memory match game</p>
-            <p>The clip below is a preview of how the game plays</p>
-            <img id="game-preview" src="./assets/images/video/ezgif.com-gif-maker.gif"/>
-            <div class="play-button" onClick="startGame(),startTimer(),hideStartModal()">
-                <span>Play</span>
-            </div>
-        </div>
-    </div>
+    
     <section class="right panel">
         <div class="stones-container">
-            Score
+            <span>Score</span>
             <div class="space stone shadow"></div>
             <div class="power stone shadow"></div>
             <div class="time stone shadow"></div>  
         </div>
         <div class="restart" onclick=restartGame()>
-            <span>Restart</span><div class="gauntlet"></div>
+            <span>Restart</span>
+            <div class="gauntlet"></div>
         </div>
     </section>
 </main>
