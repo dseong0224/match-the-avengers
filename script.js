@@ -15,12 +15,48 @@ let levelOneCardsArray = [
     "url(./assets/images/cards/ironmaninsuit_from_poster.png)"
 ]
 
-let levelTwoCardsArray = [];
-let levelThreeCardsArray = [];
-let levelFourCardsArray = [];
-let levelFiveCardsArray = [];
+let levelTwoCardsArray = [
+    "url(./assets/images/cards/timholland_card.jpg)",
+    "url(./assets/images/cards/timholland_card.jpg)",
+    "url(./assets/images/cards/timholland_card.jpg)",
+    "url(./assets/images/cards/timholland_card.jpg)",
+    "url(./assets/images/cards/timholland_card.jpg)",
+    "url(./assets/images/cards/timholland_card.jpg)",
+    "url(./assets/images/cards/timholland_card.jpg)",
+    "url(./assets/images/cards/timholland_card.jpg)",
+]
 
-
+let levelThreeCardsArray = [
+    "url(./assets/images/cards/ironmaninsuit_card.png)",
+    "url(./assets/images/cards/ironmaninsuit_card.png)",
+    "url(./assets/images/cards/ironmaninsuit_card.png)",
+    "url(./assets/images/cards/ironmaninsuit_card.png)",
+    "url(./assets/images/cards/ironmaninsuit_card.png)",
+    "url(./assets/images/cards/ironmaninsuit_card.png)",
+    "url(./assets/images/cards/ironmaninsuit_card.png)",
+    "url(./assets/images/cards/ironmaninsuit_card.png)"
+];
+let levelFourCardsArray = [
+    "url(./assets/images/cards/hawkeye_card.jpg)",
+    "url(./assets/images/cards/hawkeye_card.jpg)",
+    "url(./assets/images/cards/hawkeye_card.jpg)",
+    "url(./assets/images/cards/hawkeye_card.jpg)",
+    "url(./assets/images/cards/hawkeye_card.jpg)",
+    "url(./assets/images/cards/hawkeye_card.jpg)",
+    "url(./assets/images/cards/hawkeye_card.jpg)",
+    "url(./assets/images/cards/hawkeye_card.jpg)"
+];
+let levelFiveCardsArray = [
+    "url(./assets/images/cards/blackwidow_card.jpg)",
+    "url(./assets/images/cards/blackwidow_card.jpg)",
+    "url(./assets/images/cards/blackwidow_card.jpg)",
+    "url(./assets/images/cards/blackwidow_card.jpg)",
+    "url(./assets/images/cards/blackwidow_card.jpg)",
+    "url(./assets/images/cards/blackwidow_card.jpg)",
+    "url(./assets/images/cards/blackwidow_card.jpg)",
+    "url(./assets/images/cards/blackwidow_card.jpg)"
+];
+let deckInPlay = levelOneCardsArray;
 
 let firstCardUrl = null;
 let secondCardUrl = null;
@@ -66,8 +102,8 @@ function generateCardHolders(cardsArray){
         $(".deck").append(gameDeck);
     }    
 }
-function setGameTable (){
-    let shuffledArray = shuffleArray(levelOneCardsArray);
+function setGameTable (deck){
+    let shuffledArray = shuffleArray(deck);
     let gameDeck = shuffledArray.slice(0,8);
     gameDeck = gameDeck.concat(gameDeck);
     gameDeck = shuffleArray(gameDeck);
@@ -89,10 +125,22 @@ function playAudio(){
     });
 }
 
-function startGame() {
-setGameTable()
-$(".card").click(handleCardClick);
-playAudio();
+function startGame(deck) {
+    firstCardUrl = null;
+    secondCardUrl = null;
+    totalMatches = null;
+    
+    firstCard = null;
+    secondCard = null;
+    
+    maxMatches = 8;
+    attempts = 0;
+    
+    timePassed = 0;
+
+    setGameTable(deck);
+    $(".card").click(handleCardClick);
+    playAudio();
 }
 
 function hideStartModal(){
@@ -156,6 +204,7 @@ function finishGame(){
         $(".modal-time").text(" in " + timePassed + " seconds");
         $(".modal-score-title").append($(".modal-score"));
         clearInterval(counter);
+        $(".win").text("Game Over");
         ratePlayer();
         openModal();
     }
@@ -171,17 +220,20 @@ function finishGame(){
 }
 
 function openModal(){
-    $("#popup").removeClass("hide");
-
+    $("#popup_shadow").removeClass("hide");
 }
 
 function closeModal(){
-    $("#popup").addClass('hide')
+    $("#popup_shadow").addClass('hide')
 }
 
 function restartGame(){
     totalMatches = null;
     attempts = 0;
+    firstCard = null;
+    firstCardUrl = null;
+    secondCard = null;
+    secondCardUrl = null;
     
     clearInterval(counter);
     timePassed = 0;
@@ -197,17 +249,44 @@ function restartGame(){
     closeModal();
 }
 
+function startNextRound(){
+    totalMatches = null;
+    attempts = 0;
+    firstCard = null;
+    firstCardUrl = null;
+    secondCard = null;
+    secondCardUrl = null;
+    
+    clearInterval(counter);
+    timePassed = 0;
+    startTimer()
+    $("#countup").text("ready...");
+    $('.attempts-count').text(attempts);
+    $('.card').removeClass('isFlipped');
+    $('.card').css('pointer-events', '');
+
+    $(".space").addClass("shadow");
+    $(".power").addClass("shadow");
+    $(".time").addClass("shadow");
+    closeModal();
+    deck = levelTwoCardsArray;
+    $(".next-round-button").click(startGame(deck))
+}
+
 function ratePlayer(){
     if(totalMatches === 8){
         if (timePassed < 60){
             $(".space").removeClass("shadow");
             $(".power").removeClass("shadow");
             $(".time").removeClass("shadow");
+            $(".win").text("Wakanda Forever");
         } else if(timePassed < 90){
             $(".space").removeClass("shadow");
             $(".power").removeClass("shadow");
+            $(".win").text("You're getting the hand of it");
         } else if (timePassed < 120){
             $(".space").removeClass("shadow");
+            $(".win").text("Maybe try again");
         } else {
             return;
         }

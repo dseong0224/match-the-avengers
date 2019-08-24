@@ -17,7 +17,7 @@
                 The clip below is a preview of how the game plays</p>
             <div id="preview_button_container">
                 <img id="game-preview" src="./assets/images/video/ezgif.com-gif-maker.gif"/>
-                <div class="play-button" onClick="startGame(),startTimer(),hideStartModal()">
+                <div class="play-button" onClick="startGame(deckInPlay),startTimer(),hideStartModal()">
                     <span>Play</span>
                 </div>
             </div>
@@ -31,23 +31,23 @@
 </header>
 
 <main>
-
-    <div id="popup" class="modal_shadow hide">
-        <a class="close" onclick=closeModal()>x</a>
-        <span class="win">You're getting the hang of it!</span>
-        <ul class="game-summary" style="list-style-type:none;">
-            <li class="modal-attempts">Attempts</li>
-            <li class="modal-time">Time</li>
-            <li class="modal-score-title">Score</li>
-            <li class="modal-score">
-                <div class="space modal-stone shadow"></div>
-                <div class="power modal-stone shadow"></div>
-                <div class="time modal-stone shadow"></div>
-            </li>
-        </ul>
-        <span class="levelup-button" onclick=restartGame()>Next Round</span>
+    <div id="popup_shadow" class="hide">
+        <div id="popup" class="modal_shadow">
+            <a class="close" onclick=closeModal()>x</a>
+            <span class="win">You're getting the hang of it!</span><br>
+            <div class="game-summary" style="list-style-type:none;"><br>
+                <div class="modal-attempts">Attempts</div><br>
+                <div class="modal-time">Time</div><br>
+                <div class="modal-score-title">Score</div><br>
+                <div class="modal-score">
+                    <div class="space modal-stone shadow"></div>
+                    <div class="power modal-stone shadow"></div>
+                    <div class="time modal-stone shadow"></div>
+                </div>
+            </div><br>
+            <span class="next-round-button" onclick=startNextRound()>Next Round</span>
+        </div>
     </div>
-
     <section class="left panel">
         <div class="attempts">Attempts</div><span class="attempts-count">0</span>
         <div class="babyGroot"></div>

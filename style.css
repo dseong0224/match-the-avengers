@@ -143,7 +143,7 @@ main {
     flex-wrap: wrap;
     color: black;
     text-shadow: 3px 2px white;
-    font-size: 1.5rem;
+    font-size: 5vh;
 }
 
 /* left panel */
@@ -166,8 +166,8 @@ main {
 
 .babyGroot{
     height: 20%;
-    margin-top: 50%;
-    margin-bottom: 50%;
+    margin-top: 25%;
+    margin-bottom: 25%;
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -201,8 +201,8 @@ main {
 }
 .stone{
     display: flex;
-    height: 4rem;
-    width: 4rem;
+    height: 10vh;
+    width: 10vh;
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -287,12 +287,27 @@ main {
 
 audio {display: none;}
 
-#popup {
+#popup_shadow {
+    height: 90vh;
+    width: 100vw;
     position: fixed;
-    z-index: 2;
-    height: 50vh;
+    z-index: 1;
+    background-color: rgba( #716F71, 0.5);
+    border: #E5F720;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4vh
+}
+
+#popup {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    z-index: 10;
+    height: 60vh;
     width: 80vh;
-    font-size: 2rem;
+    /* font-size: 2rem; */
     color: black;
     text-shadow: 5px 3px rgb(255, 255, 255);
     background-color: rgba(181, 240, 20, 0.9);
@@ -313,8 +328,8 @@ audio {display: none;}
 }
 
 .modal-stone {
-    height: 4rem;
-    width: 4rem;
+    height: 10vh;
+    width: 10vh;
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -332,7 +347,7 @@ audio {display: none;}
     transition: all 0.5s;
 
 }
-.levelup-button {
+.next-round-button {
     font-size: 2rem;
     transition: transform .2s;
 }
