@@ -296,7 +296,7 @@ audio {display: none;}
     border: #E5F720;
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     font-size: 4vh
 }
 
@@ -305,9 +305,8 @@ audio {display: none;}
     flex-direction: column;
     position: fixed;
     z-index: 10;
-    height: 60vh;
-    width: 80vh;
-    /* font-size: 2rem; */
+    height: 70%;
+    width: 60%;
     color: black;
     text-shadow: 5px 3px rgb(255, 255, 255);
     background-color: rgba(181, 240, 20, 0.9);
@@ -348,12 +347,12 @@ audio {display: none;}
 
 }
 .next-round-button {
-    font-size: 2rem;
+    font-size: 5vh;
     transition: transform .2s;
 }
-.levelup-button:hover {
+.next-round-button:hover {
     cursor: pointer;
-    font-size: 2.5rem;
+    font-size: 7vh;
 }
 #popup .close {
     cursor: pointer;
