@@ -97,6 +97,7 @@ function startGame(deck) {
     playAudio();
     displayGameResult();
     $(".next-round-button").click(function(){
+        $('.attempts-count').text(attempts);
         startGame(deckInPlay);
     })
     $("#thors_hammer").click(function(){
