@@ -95,6 +95,7 @@ function startGame(deck) {
     hideStartModal();
     $(".card").click(handleCardClick);
     playAudio();
+    displayGameResult();
     $(".next-round-button").click(function(){
         startGame(deckInPlay);
     })
@@ -144,7 +145,7 @@ function startTimer(){
     counter = setInterval(function(){
     $("#countup").text(timePassed + "  sec");
     timePassed += 1;
-    }, 1000);
+    }, 900);
 }
 
 function resetTimer(){
@@ -179,7 +180,7 @@ function handleCardClick(event) {
                     secondCard.css('pointer-events', '');
                     resetCardValues();
                     clickable = true; 
-                }, 1500);
+                }, 900);
             } else if (firstCardUrl === secondCardUrl) {
                 totalMatches++;
                 resetCardValues();
@@ -188,7 +189,7 @@ function handleCardClick(event) {
                 setTimeout( function () {
                     displayGameResult()
                     clickable = true;
-                }, 1500);
+                }, 900);
 
             } else {
                 return
@@ -196,8 +197,6 @@ function handleCardClick(event) {
         }
     }
 }
-
-
 
 function displayGameResult(){
     if(timePassed === 150 ){
@@ -232,15 +231,12 @@ function updateStats(){
 function openModal(){
     $("#popup_shadow").removeClass("hide");
 }
-
 function closeModal(){
     $("#popup_shadow").addClass('hide')
 }
-
 function hideStartModal(){
     $("#play-button-shadow").addClass('hide')
 }
-
 function restartGame(){
     resetStats();
     startTimer()
@@ -251,28 +247,24 @@ function restartGame(){
     hideGameScore();
     closeModal();
 }
-
 function hideGameScore(){
     $(".space").addClass("shadow");
     $(".power").addClass("shadow");
     $(".time").addClass("shadow");
 }
-
 function resetStats(){
     totalMatches = null;
     attempts = 0;
 }
-
 function resetCardValues(){
     firstCard = null;
     firstCardUrl = null;
     secondCard = null;
     secondCardUrl = null;
 }
-
 function ratePlayer(){
     if(totalMatches === maxMatches){
-        if (timePassed < 60){
+        if (timePassed < 50){
             $(".space").removeClass("shadow");
             $(".power").removeClass("shadow");
             $(".time").removeClass("shadow");
@@ -291,11 +283,9 @@ function ratePlayer(){
         }
     }
 }
-
 function playAudio(){
     let cardClickSoundEffect = $(".mouse-action")[0];
-    $(".background-music")[0].play();
-    
+    $(".background-music")[0].play(); 
     $(".card").click(function() {
         cardClickSoundEffect.play();
     });
