@@ -41,14 +41,16 @@ let levelTwoCardsArray = [
 ]
 
 let levelThreeCardsArray = [
-    "url(./assets/images/cards/levelOneCards/ironmaninsuit_card.png)",
-    "url(./assets/images/cards/levelOneCards/ironmaninsuit_card.png)",
-    "url(./assets/images/cards/levelOneCards/ironmaninsuit_card.png)",
-    "url(./assets/images/cards/levelOneCards/ironmaninsuit_card.png)",
-    "url(./assets/images/cards/levelOneCards/ironmaninsuit_card.png)",
-    "url(./assets/images/cards/levelOneCards/ironmaninsuit_card.png)",
-    "url(./assets/images/cards/levelOneCards/ironmaninsuit_card.png)",
-    "url(./assets/images/cards/levelOneCards/ironmaninsuit_card.png)"
+    "url(./assets/images/cards/levelThreeCards/blackpanther1.jpg)",
+    "url(./assets/images/cards/levelThreeCards/blackpanther2.jpg)",
+    "url(./assets/images/cards/levelThreeCards/blackpanther3.jpg)",
+    "url(./assets/images/cards/levelThreeCards/blackpanther4.jpg)",
+    "url(./assets/images/cards/levelThreeCards/blackpanther5.jpg)",
+    "url(./assets/images/cards/levelThreeCards/blackpanther6.jpg)",
+    "url(./assets/images/cards/levelThreeCards/blackpanther7.jpg)",
+    "url(./assets/images/cards/levelThreeCards/blackpanther8.jpeg)",
+    "url(./assets/images/cards/levelThreeCards/blackpanther9.jpg)",
+    "url(./assets/images/cards/levelThreeCards/blackpanther10.jpg)"
 ]
 
 let deckArray = [
