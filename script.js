@@ -1,63 +1,67 @@
 let levelOneCardsArray = [
-    "url(./assets/images/cards/timholland_card.jpg)",
-    "url(./assets/images/cards/captain_america_card.jpg)",
-    "url(./assets/images/cards/antman_card.jpg)",
-    "url(./assets/images/cards/hulk_card.jpg)",
-    "url(./assets/images/cards/ironmaninsuit_card.png)",
-    "url(./assets/images/cards/thor_card.jpg)",
-    "url(./assets/images/cards/drstrange_card.jpeg)",
-    "url(./assets/images/cards/blackwidow_card.jpg)",
-    "url(./assets/images/cards/scarletwitch_card.jpg)",
-    "url(./assets/images/cards/vision_card.jpg)",
-    "url(./assets/images/cards/shuri_card.jpeg)",
-    "url(./assets/images/cards/captainmarvel_card.jpg)",
-    "url(./assets/images/cards/hawkeye_card.jpg)",
-    "url(./assets/images/cards/ironmaninsuit_from_poster.png)"
+    "url(./assets/images/cards/levelOneCards/timholland_card.jpg)",
+    "url(./assets/images/cards/levelOneCards/captain_america_card.jpg)",
+    "url(./assets/images/cards/levelOneCards/antman_card.jpg)",
+    "url(./assets/images/cards/levelOneCards/hulk_card.jpg)",
+    "url(./assets/images/cards/levelOneCards/ironmaninsuit_card.png)",
+    "url(./assets/images/cards/levelOneCards/thor_card.jpg)",
+    "url(./assets/images/cards/levelOneCards/drstrange_card.jpeg)",
+    "url(./assets/images/cards/levelOneCards/blackwidow_card.jpg)",
+    "url(./assets/images/cards/levelOneCards/scarletwitch_card.jpg)",
+    "url(./assets/images/cards/levelOneCards/vision_card.jpg)",
+    "url(./assets/images/cards/levelOneCards/shuri_card.jpeg)",
+    "url(./assets/images/cards/levelOneCards/captainmarvel_card.jpg)",
+    "url(./assets/images/cards/levelOneCards/hawkeye_card.jpg)",
+    "url(./assets/images/cards/levelOneCards/ironmaninsuit_from_poster.png)"
 ]
 
 let levelTwoCardsArray = [
-    "url(./assets/images/cards/timholland_card.jpg)",
-    "url(./assets/images/cards/timholland_card.jpg)",
-    "url(./assets/images/cards/timholland_card.jpg)",
-    "url(./assets/images/cards/timholland_card.jpg)",
-    "url(./assets/images/cards/timholland_card.jpg)",
-    "url(./assets/images/cards/timholland_card.jpg)",
-    "url(./assets/images/cards/timholland_card.jpg)",
-    "url(./assets/images/cards/timholland_card.jpg)",
+    "url(./assets/images/cards/levelTwoCards/iron_legion.png)",
+    "url(./assets/images/cards/levelTwoCards/mark_I.png)",
+    "url(./assets/images/cards/levelTwoCards/mark_II.png)",
+    "url(./assets/assets/images/cards/levelTwoCards/mark_III.png)",
+    "url(./assets/images/cards/levelTwoCards/mark_IV.png)",
+    "url(./assets/images/cards/levelTwoCards/mark_L.png)",
+    "url(./assets/images/cards/levelTwoCards/mark_LXXXV.png)",
+    "url(./assets/images/cards/levelTwoCards/mark_V.png)",
+    "url(./assets/images/cards/levelTwoCards/mark_VI.png)",
+    "url(./assets/images/cards/levelTwoCards/mark_VII.png)",
+    "url(./assets/images/cards/levelTwoCards/mark_VIII.png)",
+    "url(./assets/images/cards/levelTwoCards/mark_X.png)",
+    "url(./assets/images/cards/levelTwoCards/mark_XII.png)",
+    "url(./assets/images/cards/levelTwoCards/mark_XIV.png)",
+    "url(./assets/images/cards/levelTwoCards/mark_XIX.png)",
+    "url(./assets/images/cards/levelTwoCards/mark_XLIII.png)",
+    "url(./assets/images/cards/levelTwoCards/mark_XLIV.png)",
+    "url(./assets/images/cards/levelTwoCards/mark_XLIX.png)",
+    "url(./assets/images/cards/levelTwoCards/mark_XLV.png)",
+    "url(./assets/images/cards/levelTwoCards/mark_XLVI.png)",
+    "url(./assets/images/cards/levelTwoCards/mark_XLVII.png)",
+    "url(./assets/images/cards/levelTwoCards/mark_XXXIII.png)"
 ]
 
 let levelThreeCardsArray = [
-    "url(./assets/images/cards/ironmaninsuit_card.png)",
-    "url(./assets/images/cards/ironmaninsuit_card.png)",
-    "url(./assets/images/cards/ironmaninsuit_card.png)",
-    "url(./assets/images/cards/ironmaninsuit_card.png)",
-    "url(./assets/images/cards/ironmaninsuit_card.png)",
-    "url(./assets/images/cards/ironmaninsuit_card.png)",
-    "url(./assets/images/cards/ironmaninsuit_card.png)",
-    "url(./assets/images/cards/ironmaninsuit_card.png)"
-];
-let levelFourCardsArray = [
-    "url(./assets/images/cards/hawkeye_card.jpg)",
-    "url(./assets/images/cards/hawkeye_card.jpg)",
-    "url(./assets/images/cards/hawkeye_card.jpg)",
-    "url(./assets/images/cards/hawkeye_card.jpg)",
-    "url(./assets/images/cards/hawkeye_card.jpg)",
-    "url(./assets/images/cards/hawkeye_card.jpg)",
-    "url(./assets/images/cards/hawkeye_card.jpg)",
-    "url(./assets/images/cards/hawkeye_card.jpg)"
-];
-let levelFiveCardsArray = [
-    "url(./assets/images/cards/blackwidow_card.jpg)",
-    "url(./assets/images/cards/blackwidow_card.jpg)",
-    "url(./assets/images/cards/blackwidow_card.jpg)",
-    "url(./assets/images/cards/blackwidow_card.jpg)",
-    "url(./assets/images/cards/blackwidow_card.jpg)",
-    "url(./assets/images/cards/blackwidow_card.jpg)",
-    "url(./assets/images/cards/blackwidow_card.jpg)",
-    "url(./assets/images/cards/blackwidow_card.jpg)"
-];
+    "url(./assets/images/cards/levelThreeCards/blackpanther1.jpg)",
+    "url(./assets/images/cards/levelThreeCards/blackpanther2.jpg)",
+    "url(./assets/images/cards/levelThreeCards/blackpanther3.jpg)",
+    "url(./assets/images/cards/levelThreeCards/blackpanther4.jpg)",
+    "url(./assets/images/cards/levelThreeCards/blackpanther5.jpg)",
+    "url(./assets/images/cards/levelThreeCards/blackpanther6.jpg)",
+    "url(./assets/images/cards/levelThreeCards/blackpanther7.jpg)",
+    "url(./assets/images/cards/levelThreeCards/blackpanther8.jpeg)",
+    "url(./assets/images/cards/levelThreeCards/blackpanther9.jpg)",
+    "url(./assets/images/cards/levelThreeCards/blackpanther10.jpg)"
+]
 
-let deckInPlay = levelOneCardsArray;
+let deckArray = [
+    levelOneCardsArray,
+    levelTwoCardsArray,
+    levelThreeCardsArray
+]
+
+let deckIndex = 0
+
+let deckInPlay = deckArray[deckIndex];
 
 let firstCardUrl = null;
 let secondCardUrl = null;
@@ -75,6 +79,7 @@ let counter;
 let timePassed = 0;
 
 function startGame(deck) {
+    deckInPlay = deckArray[deckIndex];
     removePreviousDeck();
     resetCardValues();
     resetTimer();
@@ -85,6 +90,9 @@ function startGame(deck) {
     hideStartModal();
     $(".card").click(handleCardClick);
     playAudio();
+    $(".next-round-button").click(function(){
+        startGame(deckInPlay)
+    })
 }
 
 function setGameTable (deck){
@@ -245,16 +253,17 @@ function ratePlayer(){
             $(".power").removeClass("shadow");
             $(".time").removeClass("shadow");
             $(".win").text("Wakanda Forever");
-            deckInPlay = levelTwoCardsArray;
+            deckIndex++;
+            // deckInPlay = deckArray[deckIndex];
         } else if(timePassed < 90){
             $(".space").removeClass("shadow");
             $(".power").removeClass("shadow");
             $(".win").text("You're getting the hand of it");
-            deckInPlay = levelTwoCardsArray;
+            deckIndex++;
+            // deckInPlay = deckArray[deckIndex];
         } else if (timePassed < 120){
             $(".space").removeClass("shadow");
             $(".win").text("Maybe try again");
-            deckInPlay = levelOneCardsArray;
         } else {
             return;
         }

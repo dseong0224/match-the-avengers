@@ -35,7 +35,7 @@ body {
 
 body {
     background: black;
-    background-image: url(./assets/images/futuristic\ background.jpg);
+    background-image: url(./assets/images/gifs&png/futuristic\ background.jpg);
     background-position: top;
     background-size: cover;
     height: 100vh;
@@ -84,7 +84,7 @@ main {
 	background: #141214;
 	font-size: 0;
     color: #ffffff;
-    background-image: url(./assets/images/cards/avengers_logo.jpg);
+    background-image: url(./assets/images/cards/levelOneCards/avengers_logo.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
