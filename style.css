@@ -296,7 +296,6 @@ audio {display: none;}
     border: #E5F720;
     display: flex;
     justify-content: center;
-    /* align-items: center; */
     font-size: 4vh
 }
 
@@ -436,3 +435,45 @@ h4 {
     margin-block-start: 2.5%;
     margin-block-end: 2%;
 }
+#victory_modal {
+    position: absolute;
+    height: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 100;
+    bottom: 0;
+    right: 0;
+}
+#vision_gif {
+    position: absolute;
+    height: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 100;
+    left: 0;
+}
+#thors_hammer {
+    cursor: pointer;
+    position: absolute;
+    height: 50%;
+    top: 40%;
+    left: 30%;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 100;
+    transition: all .2s ease-in-out;
+    -webkit-animation: rotation 2s infinite linear;
+}
+@-webkit-keyframes rotation {
+    from {
+            -webkit-transform: rotate(0deg);
+    }
+    to {
+            -webkit-transform: rotate(359deg);
+    }
+}
+#thors_hammer:hover {
+    color: rgb(2, 183, 255);
+    transform: scale(1.5);
+}
+

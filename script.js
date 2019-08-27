@@ -16,50 +16,54 @@ let levelOneCardsArray = [
 ]
 
 let levelTwoCardsArray = [
-    "url(./assets/images/cards/levelTwoCards/iron_legion.png)",
-    "url(./assets/images/cards/levelTwoCards/mark_I.png)",
-    "url(./assets/images/cards/levelTwoCards/mark_II.png)",
-    "url(./assets/assets/images/cards/levelTwoCards/mark_III.png)",
-    "url(./assets/images/cards/levelTwoCards/mark_IV.png)",
-    "url(./assets/images/cards/levelTwoCards/mark_L.png)",
-    "url(./assets/images/cards/levelTwoCards/mark_LXXXV.png)",
-    "url(./assets/images/cards/levelTwoCards/mark_V.png)",
-    "url(./assets/images/cards/levelTwoCards/mark_VI.png)",
-    "url(./assets/images/cards/levelTwoCards/mark_VII.png)",
-    "url(./assets/images/cards/levelTwoCards/mark_VIII.png)",
-    "url(./assets/images/cards/levelTwoCards/mark_X.png)",
-    "url(./assets/images/cards/levelTwoCards/mark_XII.png)",
-    "url(./assets/images/cards/levelTwoCards/mark_XIV.png)",
-    "url(./assets/images/cards/levelTwoCards/mark_XIX.png)",
-    "url(./assets/images/cards/levelTwoCards/mark_XLIII.png)",
-    "url(./assets/images/cards/levelTwoCards/mark_XLIV.png)",
-    "url(./assets/images/cards/levelTwoCards/mark_XLIX.png)",
-    "url(./assets/images/cards/levelTwoCards/mark_XLV.png)",
-    "url(./assets/images/cards/levelTwoCards/mark_XLVI.png)",
-    "url(./assets/images/cards/levelTwoCards/mark_XLVII.png)",
-    "url(./assets/images/cards/levelTwoCards/mark_XXXIII.png)"
+    "url(./assets/images/cards/levelTwoCards/blackpanther1.jpg)",
+    "url(./assets/images/cards/levelTwoCards/blackpanther2.jpg)",
+    "url(./assets/images/cards/levelTwoCards/blackpanther3.jpg)",
+    "url(./assets/images/cards/levelTwoCards/blackpanther4.jpg)",
+    "url(./assets/images/cards/levelTwoCards/blackpanther5.jpg)",
+    "url(./assets/images/cards/levelTwoCards/blackpanther6.jpg)",
+    "url(./assets/images/cards/levelTwoCards/blackpanther7.jpg)",
+    "url(./assets/images/cards/levelTwoCards/blackpanther8.jpeg)",
+    "url(./assets/images/cards/levelTwoCards/blackpanther9.jpg)",
+    "url(./assets/images/cards/levelTwoCards/blackpanther10.jpg)"
 ]
 
 let levelThreeCardsArray = [
-    "url(./assets/images/cards/levelThreeCards/blackpanther1.jpg)",
-    "url(./assets/images/cards/levelThreeCards/blackpanther2.jpg)",
-    "url(./assets/images/cards/levelThreeCards/blackpanther3.jpg)",
-    "url(./assets/images/cards/levelThreeCards/blackpanther4.jpg)",
-    "url(./assets/images/cards/levelThreeCards/blackpanther5.jpg)",
-    "url(./assets/images/cards/levelThreeCards/blackpanther6.jpg)",
-    "url(./assets/images/cards/levelThreeCards/blackpanther7.jpg)",
-    "url(./assets/images/cards/levelThreeCards/blackpanther8.jpeg)",
-    "url(./assets/images/cards/levelThreeCards/blackpanther9.jpg)",
-    "url(./assets/images/cards/levelThreeCards/blackpanther10.jpg)"
+    "url(./assets/images/cards/levelThreeCards/iron_legion.png)",
+    "url(./assets/images/cards/levelThreeCards/mark_I.png)",
+    "url(./assets/images/cards/levelThreeCards/mark_II.png)",
+    "url(./assets/images/cards/levelThreeCards/mark_XII.png)",
+    "url(./assets/images/cards/levelThreeCards/mark_XIV.png)",
+    "url(./assets/images/cards/levelThreeCards/mark_V.png)",
+    "url(./assets/images/cards/levelThreeCards/mark_XLIV.png)",
+    "url(./assets/images/cards/levelThreeCards/mark_XLIX.png)",
+    "url(./assets/images/cards/levelThreeCards/mark_XLVII.png)"
+]
+
+let levelFourCardsArray = [
+    "url(./assets/images/cards/levelFourCards/mark_III.png)",
+    "url(./assets/images/cards/levelFourCards/mark_IV.png)",
+    "url(./assets/images/cards/levelFourCards/mark_L.png)",
+    "url(./assets/images/cards/levelFourCards/mark_LXXXV.png)",
+    "url(./assets/images/cards/levelFourCards/mark_V.png)",
+    "url(./assets/images/cards/levelFourCards/mark_VI.png)",
+    "url(./assets/images/cards/levelFourCards/mark_VII.png)",
+    "url(./assets/images/cards/levelFourCards/mark_VIII.png)",
+    "url(./assets/images/cards/levelFourCards/mark_X.png)",
+    "url(./assets/images/cards/levelFourCards/mark_XLIII.png)",
+    "url(./assets/images/cards/levelFourCards/mark_XLV.png)",
+    "url(./assets/images/cards/levelFourCards/mark_XLVI.png)",
+    "url(./assets/images/cards/levelFourCards/mark_XLVII.png)"
 ]
 
 let deckArray = [
     levelOneCardsArray,
     levelTwoCardsArray,
-    levelThreeCardsArray
+    levelThreeCardsArray,
+    levelFourCardsArray
 ]
 
-let deckIndex = 0
+let deckIndex = 0;
 
 let deckInPlay = deckArray[deckIndex];
 
@@ -79,6 +83,7 @@ let counter;
 let timePassed = 0;
 
 function startGame(deck) {
+    $("#victory_popup").addClass('hide');
     deckInPlay = deckArray[deckIndex];
     removePreviousDeck();
     resetCardValues();
@@ -91,7 +96,13 @@ function startGame(deck) {
     $(".card").click(handleCardClick);
     playAudio();
     $(".next-round-button").click(function(){
-        startGame(deckInPlay)
+        startGame(deckInPlay);
+    })
+    $("#thors_hammer").click(function(){
+        deckInPlay = levelOneCardsArray;
+        updateStats();
+        hideGameScore();
+        startGame(deckInPlay);
     })
 }
 
@@ -172,6 +183,7 @@ function handleCardClick(event) {
             } else if (firstCardUrl === secondCardUrl) {
                 totalMatches++;
                 resetCardValues();
+                $('.attempts-count').text(attempts);
                 clickable = false;
                 setTimeout( function () {
                     displayGameResult()
@@ -185,26 +197,38 @@ function handleCardClick(event) {
     }
 }
 
+
+
 function displayGameResult(){
     if(timePassed === 150 ){
-        $(".modal-attempts").text("You  made "+ attempts + " attempts");
-        $(".modal-time").text(" in " + timePassed + " seconds");
-        $(".modal-score-title").append($(".modal-score"));
+        updateStats();
         clearInterval(counter);
         $(".win").text("Game Over");
         ratePlayer();
         openModal();
     }
     if(totalMatches === maxMatches){
-        $(".modal-attempts").text("You  made "+ attempts + " attempts");
-        $(".modal-time").text(" in " + timePassed + " seconds");
-        $(".modal-score-title").append($(".modal-score"));
+        if(deckInPlay === levelFourCardsArray){
+            $(".next-round-button").text("RESTART");
+            $(".end-of-game").text("You are worthy now!");
+            clearInterval(counter);
+            $("#victory_popup").removeClass('hide');
+            $(".next-round-button").addClass('hide');
+            ratePlayer();
+            openModal();
+        } 
+        updateStats();
         clearInterval(counter);
         ratePlayer();
+        $(".next-round-button").removeClass('hide');
         openModal();
     }
 }
-
+function updateStats(){
+    $(".modal-attempts").text("You  made "+ attempts + " attempts");
+    $(".modal-time").text(" in " + timePassed + " seconds");
+    $(".modal-score-title").append($(".modal-score"));
+}
 function openModal(){
     $("#popup_shadow").removeClass("hide");
 }
@@ -254,16 +278,14 @@ function ratePlayer(){
             $(".time").removeClass("shadow");
             $(".win").text("Wakanda Forever");
             deckIndex++;
-            // deckInPlay = deckArray[deckIndex];
         } else if(timePassed < 90){
             $(".space").removeClass("shadow");
             $(".power").removeClass("shadow");
             $(".win").text("You're getting the hand of it");
             deckIndex++;
-            // deckInPlay = deckArray[deckIndex];
         } else if (timePassed < 120){
             $(".space").removeClass("shadow");
-            $(".win").text("Maybe try again");
+            $(".win").text("Try again");
         } else {
             return;
         }
