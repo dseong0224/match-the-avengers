@@ -22,10 +22,10 @@ header {
 html,
 body {
     display: inline-block;
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 @font-face {
@@ -42,7 +42,7 @@ body {
     font-family: avengers-font,fantasy;
     color: white;
     text-shadow: 5px 3px rgb(87, 8, 81);
-	font-size: 2rem;
+    font-size: 2rem;
 }
 
 aside{
@@ -53,8 +53,8 @@ aside{
 }
 
 main {
-	display: flex;
-	justify-content: center;
+    display: flex;
+    justify-content: center;
     flex-direction: row;
     height: 89%;
     width: 100%;
@@ -79,21 +79,21 @@ main {
 }
 
 .deck .card .back{
-	height: 100%;
-	width: 100%;
-	background: #141214;
-	font-size: 0;
+    height: 100%;
+    width: 100%;
+    background: #141214;
+    font-size: 0;
     color: #ffffff;
     background-image: url(./assets/images/cards/levelOneCards/avengers_logo.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-	border-radius: 5px;
-	cursor: pointer;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	box-shadow: 10px 10px 10px 0 rgba(46, 61, 73, 0.5);
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 10px 10px 10px 0 rgba(46, 61, 73, 0.5);
 }
 
 .card:hover{
@@ -355,13 +355,13 @@ audio {display: none;}
 }
 #popup .close {
     cursor: pointer;
-	position: absolute;
-	top: 5px;
-	right: 10px;
+    position: absolute;
+    top: 5px;
+    right: 10px;
     font-family: fantasy;
     text-shadow: 1px 1px rgb(255, 255, 255);
-	font-size: 2rem;
-	font-weight: bold;
+    font-size: 2rem;
+    font-weight: bold;
     color: #333;
     transition: transform .2s;
 }
@@ -386,7 +386,7 @@ audio {display: none;}
     justify-content: center;
     flex-direction: column;
     height: 98%;
-    width: 90%;
+    width: 98%;
     margin-top: 1%;
     margin-bottom: 1%;
     border: #E5F720 solid 3px;
@@ -415,7 +415,7 @@ audio {display: none;}
     display: flex;
 }
 #preview_button_container {
-    height: 50%;
+    height: 40%;
     width: 75%;
     display: flex;
     flex-direction: row;
@@ -429,7 +429,7 @@ audio {display: none;}
 }
 #game-preview {
     display: inline-block;
-    height: 100%;
+    /* height: 100%; */
 }
 h4 {
     margin-block-start: 2.5%;
@@ -477,3 +477,8 @@ h4 {
     transform: scale(1.5);
 }
 
+/* @media only screen and (min-width:700px) and (max-width:800px) {
+    #title {
+        font-size: 4vh;
+    }
+} */
