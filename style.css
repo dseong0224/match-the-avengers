@@ -394,7 +394,6 @@ audio {display: none;}
     background: rgba(15, 5, 49, 0.8);
 }
 .play-button {
-    /* position: absolute; */
     z-index: 3;
     cursor: pointer;
     height: 5rem;
@@ -429,7 +428,7 @@ audio {display: none;}
 }
 #game-preview {
     display: inline-block;
-    /* height: 100%; */
+    height: 100%;
 }
 h4 {
     margin-block-start: 2.5%;
@@ -477,8 +476,147 @@ h4 {
     transform: scale(1.5);
 }
 
-/* @media only screen and (min-width:700px) and (max-width:800px) {
+@media only screen and (orientation:portrait) {
     #title {
         font-size: 4vh;
     }
-} */
+    aside{
+        background-color: rgba(141, 65, 228, 0.7);
+        border-radius: 7px;
+        display: inline-block;
+        /* margin: 10% 2%; */
+    }
+    main {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 89%;
+        width: 100%;
+    }
+    .panel {
+        height: 10%;
+        width: 98%;
+        font-size: 4vh;
+    }
+    .attempts {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .attempts-count {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .babyGroot {
+        height: 100%;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    #countup {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+
+    .right{
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: row;
+        display: flex;
+      }
+    .stones-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        height: 100%;
+        width: 50%;
+        align-items: center;
+        padding-left: 0;
+        margin-right: 0;
+    }
+    .stones-container span {
+        margin-right: 10%;
+    }
+    .stone {
+        display: flex;
+        height: 7vh;
+        width: 5vh;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin: auto;
+    }
+    .restart {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        text-align: center;
+        height: 100%;
+        width: 35%;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
+    }
+    .gauntlet{
+        height: 95%;
+        width: 25%;
+    }
+
+
+    .deck {
+        width: 96%;
+        height: 95%;
+        background: #716F71;
+        background-image: url(./assets/images/gifs&png/sikcing-gif.gif);
+        background-position: center;
+        background-size: cover;
+        padding: 0.5rem;
+        border-radius: 5px;
+        box-shadow: 0px 0px 70px 10px rgb(255, 255, 255, 0.9);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        margin-left: 0;
+        margin-right: 0;
+    } 
+    #game-preview {
+        display: inline-block;
+        width: 100%;
+    }
+    .play-button {
+        margin-top: 5%;
+    }
+    .display {
+        display: flex;
+        height: 100%;
+        width: 20%;
+        background-position: bottom;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    .iron-man {
+        margin: 0% 0% 0% 0%;
+    }
+    .blackpanther{
+        margin: 0% 0% 0% 0%; 
+    }
+
+    #popup {
+        padding-top: 0;
+        width: 95%;
+    }
+    #popup .close {
+        position: relative;
+        top: 0;
+        right: 0;
+        height: 10%;
+        width: 98%;
+        text-align: right;
+    }
+}
