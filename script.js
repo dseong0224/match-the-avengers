@@ -76,7 +76,7 @@ let secondCard = null;
 
 let clickable = true;
 
-let maxMatches = 8;
+let maxMatches = 1;
 let attempts = 0;
 
 let counter;
@@ -87,7 +87,7 @@ function startGame(deck) {
     deckInPlay = deckArray[deckIndex];
     removePreviousDeck();
     resetCardValues();
-    // resetTimer();
+    resetTimer();
     resetStats();
     startTimer();
     setGameTable(deck);
@@ -100,12 +100,15 @@ function startGame(deck) {
         $('.attempts-count').text(attempts);
         startGame(deckInPlay);
     })
-    $("#thors_hammer").click(function(){
-        deckInPlay = levelOneCardsArray;
-        updateStats();
-        hideGameScore();
-        startGame(deckInPlay);
-    })
+}
+
+function playAgain(){
+    deckIndex=0;
+    deckInPlay = deckArray[deckIndex];
+    updateStats();
+    hideGameScore();
+    console.log("levelOneCardsArray",levelOneCardsArray);
+    startGame(levelOneCardsArray);
 }
 
 function setGameTable (deck){
@@ -142,8 +145,6 @@ function removePreviousDeck(){
     $("div").remove('.card');
 }
 
-
-
 function handleCardClick(event) {
     if(clickable) {
         let clickedCard = $(event.currentTarget);
@@ -171,7 +172,7 @@ function handleCardClick(event) {
                     secondCard.css('pointer-events', '');
                     resetCardValues();
                     clickable = true;
-                }, 900);
+                }, 1200);
             } else if (firstCardUrl === secondCardUrl) {
                 totalMatches++;
                 resetCardValues();
@@ -180,7 +181,7 @@ function handleCardClick(event) {
                 setTimeout( function () {
                     displayGameResult()
                     clickable = true;
-                }, 900);
+                }, 1200);
             } else {
                 return;
             }
@@ -190,30 +191,36 @@ function handleCardClick(event) {
 
 function displayGameResult(){
     if(timePassed === 150 ){
+        stopTimer();
+        resetTimer();
         ratePlayer();
         updateStats();
         $(".win").text("Game Over");
         openModal();
-        clearInterval(counter);
-        resetTimer();
     }
     if(totalMatches === maxMatches){
+        ratePlayer();
+        console.log("max match reached")
         if(deckInPlay === levelFourCardsArray){
-            ratePlayer();
-            updateStats();
-            $(".next-round-button").text("RESTART");
+            // ratePlayer();
+            // updateStats();
+            $(".next-round-button").text("PLAY AGAIN");
+            $(".next-round-button").click(function(){
+                playAgain();
+            });
             $(".end-of-game").text("You are worthy now!");
+            console.log("you are worthy now");
             $("#victory_popup").removeClass('hide');
             $(".next-round-button").addClass('hide');
-            openModal();
-            clearInterval(counter);
-            resetTimer()
+            // openModal();
+            // clearInterval(counter);
+            // resetTimer()
         } 
-        ratePlayer();
         updateStats();
         $(".next-round-button").removeClass('hide');
+        console.log('modal opens soon');
         openModal();
-        clearInterval(counter);
+        stopTimer();
         resetTimer();
     }
 }
@@ -225,8 +232,12 @@ function startTimer(){
     }, 1000);
 }
 
-function resetTimer(){
+function stopTimer(){
     clearInterval(counter);
+}
+
+function resetTimer(){
+    stopTimer();
     timePassed = 0;
 }
 
@@ -238,6 +249,7 @@ function updateStats(){
 
 function openModal(){
     $("#popup_shadow").removeClass("hide");
+    console.log("modal opened")
 }
 
 function closeModal(){
@@ -279,25 +291,23 @@ function resetCardValues(){
 }
 
 function ratePlayer(){
-    if(totalMatches === maxMatches){
         if (timePassed < 50){
             $(".space").removeClass("shadow");
             $(".power").removeClass("shadow");
             $(".time").removeClass("shadow");
-            $(".win").text("Wakanda Forever");
+            $(".end-of-game").text("Wakanda Forever");
             deckIndex++;
         } else if(timePassed < 90){
             $(".space").removeClass("shadow");
             $(".power").removeClass("shadow");
-            $(".win").text("You're getting the hand of it");
+            $(".end-of-game").text("You're getting the hang of it");
             deckIndex++;
         } else if (timePassed < 120){
             $(".space").removeClass("shadow");
-            $(".win").text("Try again");
+            $(".end-of-game").text("Try again");
         } else {
             return;
         }
-    }
 }
 
 function playAudio(){

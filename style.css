@@ -436,27 +436,32 @@ h4 {
 }
 #victory_modal {
     position: absolute;
-    height: 50%;
+    height: 25%;
     background-position: center;
     background-repeat: no-repeat;
     z-index: 100;
     bottom: 0;
     right: 0;
 }
+
+.modal-score-title{
+    margin-bottom: 5%;
+}
+
 #vision_gif {
     position: absolute;
-    height: 80%;
+    height: 45%;
     background-position: center;
     background-repeat: no-repeat;
     z-index: 100;
     left: 0;
+    top:0;
 }
 #thors_hammer {
-    cursor: pointer;
     position: absolute;
-    height: 50%;
-    top: 40%;
-    left: 30%;
+    height: 15%;
+    top: 5%;
+    right: 10%;
     background-position: center;
     background-repeat: no-repeat;
     z-index: 100;
@@ -618,5 +623,16 @@ h4 {
         height: 10%;
         width: 98%;
         text-align: right;
+    }
+    #thors_hammer{
+        height: 8%;
+        top: 8%;
+        right: 2%;
+    }
+    #vision_gif{
+        height: 20%;
+    }
+    #victory_modal{
+        height: 15%;
     }
 }
