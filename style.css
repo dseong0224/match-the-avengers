@@ -22,10 +22,10 @@ header {
 html,
 body {
     display: inline-block;
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 @font-face {
@@ -42,7 +42,7 @@ body {
     font-family: avengers-font,fantasy;
     color: white;
     text-shadow: 5px 3px rgb(87, 8, 81);
-	font-size: 2rem;
+    font-size: 2rem;
 }
 
 aside{
@@ -53,8 +53,8 @@ aside{
 }
 
 main {
-	display: flex;
-	justify-content: center;
+    display: flex;
+    justify-content: center;
     flex-direction: row;
     height: 89%;
     width: 100%;
@@ -79,21 +79,21 @@ main {
 }
 
 .deck .card .back{
-	height: 100%;
-	width: 100%;
-	background: #141214;
-	font-size: 0;
+    height: 100%;
+    width: 100%;
+    background: #141214;
+    font-size: 0;
     color: #ffffff;
     background-image: url(./assets/images/cards/levelOneCards/avengers_logo.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-	border-radius: 5px;
-	cursor: pointer;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	box-shadow: 10px 10px 10px 0 rgba(46, 61, 73, 0.5);
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 10px 10px 10px 0 rgba(46, 61, 73, 0.5);
 }
 
 .card:hover{
@@ -355,13 +355,13 @@ audio {display: none;}
 }
 #popup .close {
     cursor: pointer;
-	position: absolute;
-	top: 5px;
-	right: 10px;
+    position: absolute;
+    top: 5px;
+    right: 10px;
     font-family: fantasy;
     text-shadow: 1px 1px rgb(255, 255, 255);
-	font-size: 2rem;
-	font-weight: bold;
+    font-size: 2rem;
+    font-weight: bold;
     color: #333;
     transition: transform .2s;
 }
@@ -386,7 +386,7 @@ audio {display: none;}
     justify-content: center;
     flex-direction: column;
     height: 98%;
-    width: 90%;
+    width: 98%;
     margin-top: 1%;
     margin-bottom: 1%;
     border: #E5F720 solid 3px;
@@ -394,7 +394,6 @@ audio {display: none;}
     background: rgba(15, 5, 49, 0.8);
 }
 .play-button {
-    /* position: absolute; */
     z-index: 3;
     cursor: pointer;
     height: 5rem;
@@ -415,7 +414,7 @@ audio {display: none;}
     display: flex;
 }
 #preview_button_container {
-    height: 50%;
+    height: 40%;
     width: 75%;
     display: flex;
     flex-direction: row;
@@ -437,27 +436,32 @@ h4 {
 }
 #victory_modal {
     position: absolute;
-    height: 50%;
+    height: 25%;
     background-position: center;
     background-repeat: no-repeat;
     z-index: 100;
     bottom: 0;
     right: 0;
 }
+
+.modal-score-title{
+    margin-bottom: 5%;
+}
+
 #vision_gif {
     position: absolute;
-    height: 80%;
+    height: 45%;
     background-position: center;
     background-repeat: no-repeat;
     z-index: 100;
     left: 0;
+    top:0;
 }
 #thors_hammer {
-    cursor: pointer;
     position: absolute;
-    height: 50%;
-    top: 40%;
-    left: 30%;
+    height: 15%;
+    top: 5%;
+    right: 10%;
     background-position: center;
     background-repeat: no-repeat;
     z-index: 100;
@@ -477,3 +481,158 @@ h4 {
     transform: scale(1.5);
 }
 
+@media only screen and (orientation:portrait) {
+    #title {
+        font-size: 4vh;
+    }
+    aside{
+        background-color: rgba(141, 65, 228, 0.7);
+        border-radius: 7px;
+        display: inline-block;
+        /* margin: 10% 2%; */
+    }
+    main {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 89%;
+        width: 100%;
+    }
+    .panel {
+        height: 10%;
+        width: 98%;
+        font-size: 4vh;
+    }
+    .attempts {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .attempts-count {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .babyGroot {
+        height: 100%;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    #countup {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+
+    .right{
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: row;
+        display: flex;
+      }
+    .stones-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        height: 100%;
+        width: 50%;
+        align-items: center;
+        padding-left: 0;
+        margin-right: 0;
+    }
+    .stones-container span {
+        margin-right: 10%;
+    }
+    .stone {
+        display: flex;
+        height: 7vh;
+        width: 5vh;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin: auto;
+    }
+    .restart {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        text-align: center;
+        height: 100%;
+        width: 35%;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
+    }
+    .gauntlet{
+        height: 95%;
+        width: 25%;
+    }
+
+
+    .deck {
+        width: 96%;
+        height: 95%;
+        background: #716F71;
+        background-image: url(./assets/images/gifs&png/sikcing-gif.gif);
+        background-position: center;
+        background-size: cover;
+        padding: 0.5rem;
+        border-radius: 5px;
+        box-shadow: 0px 0px 70px 10px rgb(255, 255, 255, 0.9);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        margin-left: 0;
+        margin-right: 0;
+    } 
+    #game-preview {
+        display: inline-block;
+        width: 100%;
+    }
+    .play-button {
+        margin-top: 5%;
+    }
+    .display {
+        display: flex;
+        height: 100%;
+        width: 20%;
+        background-position: bottom;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    .iron-man {
+        margin: 0% 0% 0% 0%;
+    }
+    .blackpanther{
+        margin: 0% 0% 0% 0%; 
+    }
+
+    #popup {
+        padding-top: 0;
+        width: 95%;
+    }
+    #popup .close {
+        position: relative;
+        top: 0;
+        right: 0;
+        height: 10%;
+        width: 98%;
+        text-align: right;
+    }
+    #thors_hammer{
+        height: 8%;
+        top: 8%;
+        right: 2%;
+    }
+    #vision_gif{
+        height: 20%;
+    }
+    #victory_modal{
+        height: 15%;
+    }
+}

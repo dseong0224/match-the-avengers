@@ -1,0 +1,480 @@
+html {
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+}
+header {
+  height: 10%;
+  background-color: transparent, rgba(46, 61, 73, 0.9);
+  margin-top: 1%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+#title {
+  font-size: 4vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+html,
+body {
+  display: inline-block;
+width: 100%;
+height: 100%;
+margin: 0;
+padding: 0;
+}
+
+@font-face {
+  font-family: avengers-font;
+  src: url(./assets/images/avengeance-heroic-avenger/AVENGEANCE\ HEROIC\ AVENGER\ BD.ttf);
+}
+
+body {
+  background: black;
+  background-image: url(./assets/images/gifs&png/futuristic\ background.jpg);
+  background-position: top;
+  background-size: cover;
+  height: 100vh;
+  font-family: avengers-font,fantasy;
+  color: white;
+  text-shadow: 5px 3px rgb(87, 8, 81);
+font-size: 2rem;
+}
+
+aside{
+  background-color: rgba(141, 65, 228, 0.7);
+  border-radius: 7px;
+  display: inline-block;
+  margin: 10% 2%;
+}
+
+main {
+display: flex;
+justify-content: center;
+flex-direction: column;
+height: 89%;
+width: 100%;
+}
+
+.deck {
+  width: 95%;
+  height: 80%;
+  /* margin-left: 5%; */
+  /* margin-right: 5%; */
+  background: #716F71;
+  background-image: url(./assets/images/gifs&png/sikcing-gif.gif);
+  background-position: center;
+  background-size: cover;
+  padding: 0.5rem;
+  border-radius: 5px;
+  box-shadow: 0px 0px 70px 10px rgb(255, 255, 255, 0.9);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.deck .card .back{
+height: 100%;
+width: 100%;
+background: #141214;
+font-size: 0;
+  color: #ffffff;
+  background-image: url(./assets/images/cards/levelOneCards/avengers_logo.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+border-radius: 5px;
+cursor: pointer;
+display: flex;
+justify-content: center;
+align-items: center;
+box-shadow: 10px 10px 10px 0 rgba(46, 61, 73, 0.5);
+}
+
+.card:hover{
+  border: 5px solid rgba(74, 248, 83, 0.7)
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 24%;
+  width: 24%;
+  border-radius: 5px;
+  transition: transform 1.5s;
+  transform-style: preserve-3d;
+}
+
+.front {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+  z-index: 0;
+  position: absolute;
+  background-position: top;
+}
+.back {
+  backface-visibility: hidden;
+}
+.isFlipped {
+  transform: rotateY(180deg);
+}
+.panel{
+  height: 10%;
+  width: 98%;
+  border: white solid 3px;
+  box-shadow: 25px 25px 25px 0 rgba(255, 35, 244, 0.7);
+  background-color: rgba(168, 122, 170, 0.7);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  color: black;
+  text-shadow: 3px 2px white;
+  font-size: 4vh;
+}
+
+/* left panel */
+.left{
+  justify-content: center;
+}
+
+.attempts{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+.attempts-count{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.babyGroot{
+  height: 20%;
+  margin-top: 25%;
+  margin-bottom: 25%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url(./assets/images/gifs&png/groot-gif.gif)
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#countup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+/* right panel */
+.right{
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* rating */
+.stones-container{
+  display: flex;
+  /* flex-direction: column; */
+  /* justify-content: space-around; */
+  height: 65%;
+}
+.stone{
+  display: flex;
+  height: 5vh;
+  width: 5vh;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* margin: auto; */
+}
+.power{
+  background-image: url(./assets/images/stones/power-stone.png);
+}
+.time{
+  background-image: url(./assets/images/stones/time-stone-in-hand.png);
+}
+.space{
+  background-image: url(./assets/images/stones/space-stone.png);
+}
+.shadow{
+  opacity: 0.2;
+}
+
+/* restart button */
+.restart{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* flex-direction: column; */
+  text-align: center;
+  /* height: 30%; */
+  width: 45%;
+  margin-inline-start: 5%;
+  /* margin-inline-end: 5%; */
+}
+.gauntlet{
+  height: 200%;
+  width: 25%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url(./assets/images/gifs&png/infinity-gauntlet.png);
+}
+.gauntlet:hover{
+  cursor: pointer;
+  background-color: rgba(243, 72, 234, 0.1);
+  border-radius: 10%;
+  height: 10rem;
+  width: 10rem;
+  margin-top: -30%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.spider-man-cameo{
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  height: 20rem;
+  width: 30rem;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url(./assets/images/gifs&png/spiderman-with-web-gif.gif)
+}
+.display {
+  display: flex;
+  height: 100%;
+  width: 20%;
+  background-position: bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.iron-man {
+  margin: 0% 0% 0% 0%;
+  float: left;
+  background-image: url(./assets/images/gifs&png/rotating-ironman-gif.gif);
+}
+.blackpanther{
+  margin: 0% 0% 0% 0%; 
+  float: right;
+  background-image: url(./assets/images/gifs&png/jumping-black-panther.png);
+}
+
+.cardhover {display: none;}
+
+audio {display: none;}
+
+#popup_shadow {
+  height: 90vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 1;
+  background-color: rgba( #716F71, 0.5);
+  border: #E5F720;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3vh;
+}
+
+#popup {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 10;
+  height: 55%;
+  width: 80%;
+  color: black;
+  text-shadow: 5px 3px rgb(255, 255, 255);
+  background-color: rgba(181, 240, 20, 0.9);
+  background-position: center;
+  background-size: contain;
+  padding-top: 5%;
+  margin: auto;
+  box-shadow:  10px 15px 40px 0 rgba(181, 240, 20, 0.7);
+  border: solid 3px white;
+  transition: all 200ms;
+}
+
+.modal-score {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 5rem;
+}
+
+.modal-stone {
+  height: 10vh;
+  width: 10vh;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 2%;
+  margin-left: 2%;
+}
+
+.game-summary li {
+  margin-bottom: 2%;
+}
+
+.hide{
+  visibility: hidden;
+  transform:scale(0);
+  transition: all 0.5s;
+
+}
+.next-round-button {
+  font-size: 5vh;
+  transition: transform .2s;
+}
+.next-round-button:hover {
+  cursor: pointer;
+  font-size: 7vh;
+}
+#popup .close {
+  cursor: pointer;
+position: absolute;
+top: 5px;
+right: 10px;
+  font-family: fantasy;
+  text-shadow: 1px 1px rgb(255, 255, 255);
+font-size: 2rem;
+font-weight: bold;
+  color: #333;
+  transition: transform .2s;
+}
+#popup .close:hover {
+  color: #E5F720;
+  transform: scale(1.25);
+}
+#play-button-shadow {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  z-index: 2;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(160, 149, 200, 0.2);
+}
+#play-button-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 98%;
+  width: 98%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  border: #E5F720 solid 3px;
+  border-radius: 10px;
+  background: rgba(15, 5, 49, 0.8);
+}
+.play-button {
+  /* position: absolute; */
+  z-index: 3;
+  cursor: pointer;
+  height: 5rem;
+  width: 8rem;
+  border: white solid 5px;
+  border-radius: 50px;
+  background-color: rgb(27, 205, 250);
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+.play-button:hover {
+  color: #E5F720;
+  transform: scale(1.25);
+}
+.play-button span {
+  display: flex;
+}
+#preview_button_container {
+  height: 50%;
+  width: 75%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 5%;
+}
+#play-button-container p {
+  font-size: 1.5rem;
+  margin-block-start: 0.1rem;
+  margin-block-end: 0.5rem; 
+}
+#game-preview {
+  display: inline-block;
+  /* height: 100%; */
+}
+h4 {
+  margin-block-start: 2.5%;
+  margin-block-end: 2%;
+}
+#victory_modal {
+  position: absolute;
+  height: 25%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 100;
+  bottom: 0;
+  right: 0;
+}
+#vision_gif {
+  position: absolute;
+  height: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 100;
+  left: 20%;
+}
+#thors_hammer {
+  cursor: pointer;
+  position: absolute;
+  height: 30%;
+  top: 50%;
+  left: 10%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 100;
+  transition: all .2s ease-in-out;
+  -webkit-animation: rotation 2s infinite linear;
+}
+@-webkit-keyframes rotation {
+  from {
+          -webkit-transform: rotate(0deg);
+  }
+  to {
+          -webkit-transform: rotate(359deg);
+  }
+}
+#thors_hammer:hover {
+  color: rgb(2, 183, 255);
+  transform: scale(1.5);
+}

@@ -87,9 +87,9 @@ function startGame(deck) {
     deckInPlay = deckArray[deckIndex];
     removePreviousDeck();
     resetCardValues();
-    resetTimer();
-    startTimer();
+    // resetTimer();
     resetStats();
+    startTimer();
     setGameTable(deck);
     closeModal();
     hideStartModal();
@@ -142,17 +142,7 @@ function removePreviousDeck(){
     $("div").remove('.card');
 }
 
-function startTimer(){
-    counter = setInterval(function(){
-    $("#countup").text(timePassed + "  sec");
-    timePassed += 1;
-    }, 900);
-}
 
-function resetTimer(){
-    clearInterval(counter);
-    timePassed = 0;
-}
 
 function handleCardClick(event) {
     if(clickable) {
@@ -177,10 +167,10 @@ function handleCardClick(event) {
                 setTimeout( function () {
                     firstCard.toggleClass('isFlipped');
                     secondCard.toggleClass('isFlipped');
-                    firstCard.css('pointer-events', ''); 
+                    firstCard.css('pointer-events', '');
                     secondCard.css('pointer-events', '');
                     resetCardValues();
-                    clickable = true; 
+                    clickable = true;
                 }, 900);
             } else if (firstCardUrl === secondCardUrl) {
                 totalMatches++;
@@ -191,9 +181,8 @@ function handleCardClick(event) {
                     displayGameResult()
                     clickable = true;
                 }, 900);
-
             } else {
-                return
+                return;
             }
         }
     }
@@ -201,68 +190,95 @@ function handleCardClick(event) {
 
 function displayGameResult(){
     if(timePassed === 150 ){
-        updateStats();
-        clearInterval(counter);
-        $(".win").text("Game Over");
         ratePlayer();
+        updateStats();
+        $(".win").text("Game Over");
         openModal();
+        clearInterval(counter);
+        resetTimer();
     }
     if(totalMatches === maxMatches){
         if(deckInPlay === levelFourCardsArray){
-            $(".next-round-button").text("RESTART");
+            ratePlayer();
+            updateStats();
+            deckIndex=-1;
+            $(".next-round-button").text("PLAY AGAIN");
             $(".end-of-game").text("You are worthy now!");
-            clearInterval(counter);
             $("#victory_popup").removeClass('hide');
             $(".next-round-button").addClass('hide');
-            ratePlayer();
             openModal();
+            clearInterval(counter);
+            // resetTimer()
         } 
-        updateStats();
-        clearInterval(counter);
         ratePlayer();
+        updateStats();
         $(".next-round-button").removeClass('hide');
         openModal();
+        clearInterval(counter);
+        resetTimer();
     }
 }
+
+function startTimer(){
+    counter = setInterval(function(){
+    $("#countup").text(timePassed + "  sec");
+    timePassed += 1;
+    }, 1000);
+}
+
+function resetTimer(){
+    clearInterval(counter);
+    timePassed = 0;
+}
+
 function updateStats(){
     $(".modal-attempts").text("You  made "+ attempts + " attempts");
     $(".modal-time").text(" in " + timePassed + " seconds");
     $(".modal-score-title").append($(".modal-score"));
 }
+
 function openModal(){
     $("#popup_shadow").removeClass("hide");
 }
+
 function closeModal(){
     $("#popup_shadow").addClass('hide')
 }
+
 function hideStartModal(){
     $("#play-button-shadow").addClass('hide')
 }
-function restartGame(){
-    resetStats();
-    startTimer()
+
+function restartGame(){  
     $("#countup").text("ready...");
     $('.attempts-count').text(attempts);
     $('.card').removeClass('isFlipped');
     $('.card').css('pointer-events', '');
     hideGameScore();
     closeModal();
+    resetStats();
+    startTimer();
 }
+
 function hideGameScore(){
     $(".space").addClass("shadow");
     $(".power").addClass("shadow");
     $(".time").addClass("shadow");
 }
+
 function resetStats(){
     totalMatches = null;
     attempts = 0;
+    resetTimer();
 }
+
 function resetCardValues(){
     firstCard = null;
     firstCardUrl = null;
     secondCard = null;
     secondCardUrl = null;
 }
+
 function ratePlayer(){
     if(totalMatches === maxMatches){
         if (timePassed < 50){
@@ -284,6 +300,7 @@ function ratePlayer(){
         }
     }
 }
+
 function playAudio(){
     let cardClickSoundEffect = $(".mouse-action")[0];
     $(".background-music")[0].play(); 
