@@ -1,3 +1,7 @@
+$( document ).ready(function() {
+    startApp();
+});
+
 let levelOneCardsArray = [
     "url(./assets/images/cards/levelOneCards/timholland_card.jpg)",
     "url(./assets/images/cards/levelOneCards/captain_america_card.jpg)",
@@ -76,37 +80,49 @@ let secondCard = null;
 
 let clickable = true;
 
-let maxMatches = 8;
+let maxMatches = 1;
 let attempts = 0;
 
 let counter;
 let timePassed = 0;
 
-function startGame(deck) {
-    $("#victory_popup").addClass('hide');
-    deckInPlay = deckArray[deckIndex];
-    removePreviousDeck();
-    resetCardValues();
-    // resetTimer();
-    resetStats();
-    startTimer();
-    setGameTable(deck);
-    closeModal();
-    hideStartModal();
-    $(".card").click(handleCardClick);
-    playAudio();
-    displayGameResult();
+function startApp(){
+    // on play button click, play with first deck
+    $(".play-button").click(function(){
+        console.log("play button clicked")
+        deckIndex = 0;
+        deckInPlay = deckArray[deckIndex];
+        startGame(deckInPlay);
+        deckIndex = deckIndex++;
+    })
+    // on 'next round' button click, play with next deck
     $(".next-round-button").click(function(){
-        $('.attempts-count').text(attempts);
+         
+        deckInPlay = deckArray[deckIndex];
         startGame(deckInPlay);
     })
-    $("#thors_hammer").click(function(){
-        deckInPlay = levelOneCardsArray;
-        updateStats();
-        hideGameScore();
-        startGame(deckInPlay);
+    // when deck in play is last in list, 
+    if($(".next-round-button").text() === "PLAY AGAIN");
+    $(".next-round-button").click(function(){
+        resetGame();
     })
 }
+
+function startGame(deck) { //reset card values, stats, close all modals, reset timer
+    removePreviousDeck();
+    resetCardValues();
+    resetStats();
+    setGameTable(deck);
+    resetTimer();
+    closeResultModal();
+    closeStartModal();
+    $(".card").click(handleCardClick);
+    playAudio();
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 function setGameTable (deck){
     let shuffledArray = shuffleArray(deck);
@@ -188,34 +204,64 @@ function handleCardClick(event) {
     }
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+function resetGame(){
+
+    closeResultModal();
+    openStartModal();
+
+    deckArray = [
+        levelOneCardsArray,
+        levelTwoCardsArray,
+        levelThreeCardsArray,
+        levelFourCardsArray
+    ]
+    
+    deckIndex = 0;
+    
+    deckInPlay = deckArray[deckIndex];
+    
+    firstCardUrl = null;
+    secondCardUrl = null;
+    totalMatches = null;
+    
+    firstCard = null;
+    secondCard = null;
+    
+    clickable = true;
+    
+    maxMatches = 1;
+    attempts = 0;
+    
+    counter;
+    timePassed = 0;
+
+    startApp();
+}
+
 function displayGameResult(){
     if(timePassed === 150 ){
+        clearInterval(counter);
         ratePlayer();
         updateStats();
         $(".win").text("Game Over");
-        openModal();
-        clearInterval(counter);
-        resetTimer();
+        openResultModal();
     }
     if(totalMatches === maxMatches){
-        if(deckInPlay === levelFourCardsArray){
+        if(deckIndex === 3){
+            clearInterval(counter);
             ratePlayer();
             updateStats();
-            deckIndex=-1;
+            deckIndex = 0;
             $(".next-round-button").text("PLAY AGAIN");
             $(".end-of-game").text("You are worthy now!");
             $("#victory_popup").removeClass('hide');
-            $(".next-round-button").addClass('hide');
-            openModal();
-            clearInterval(counter);
-            // resetTimer()
+            openResultModal();
         } 
-        ratePlayer();
-        updateStats();
-        $(".next-round-button").removeClass('hide');
-        openModal();
-        clearInterval(counter);
-        resetTimer();
+        openResultModal();
     }
 }
 
@@ -226,9 +272,10 @@ function startTimer(){
     }, 1000);
 }
 
-function resetTimer(){
+function resetTimer(){ //resets and starts timer
     clearInterval(counter);
     timePassed = 0;
+    startTimer();
 }
 
 function updateStats(){
@@ -237,50 +284,63 @@ function updateStats(){
     $(".modal-score-title").append($(".modal-score"));
 }
 
-function openModal(){
+function openResultModal(){
+    clearInterval(counter);
+    ratePlayer();
+    updateStats();
     $("#popup_shadow").removeClass("hide");
 }
 
-function closeModal(){
+function closeResultModal(){
+    ratePlayer();
     $("#popup_shadow").addClass('hide')
 }
 
-function hideStartModal(){
+function openStartModal(){
+
+    $("#play-button-shadow").removeClass('hide')
+}
+
+function closeStartModal(){
+    resetStats()
+    dimStones();
     $("#play-button-shadow").addClass('hide')
 }
 
 function restartGame(){  
-    $("#countup").text("ready...");
-    $('.attempts-count').text(attempts);
-    $('.card').removeClass('isFlipped');
-    $('.card').css('pointer-events', '');
-    hideGameScore();
-    closeModal();
-    resetStats();
-    startTimer();
+
+    // openStartModal();
+    startGame(deckInPlay);//start game with current card deck
+    // $("#countup").text("ready...");
+    // $('.attempts-count').text(attempts);
+    // $('.card').removeClass('isFlipped');
+    // $('.card').css('pointer-events', '');
+    // dimStones();
+    // closeResultModal();
+    // resetStats();
+    // startTimer();
 }
 
-function hideGameScore(){
+function dimStones(){//shadows the stones both in modal and side panel
     $(".space").addClass("shadow");
     $(".power").addClass("shadow");
     $(".time").addClass("shadow");
 }
 
-function resetStats(){
+function resetStats(){ // resests stats at beginning of each new game
     totalMatches = null;
     attempts = 0;
     resetTimer();
 }
 
-function resetCardValues(){
+function resetCardValues(){ //reset card values at beginning of each game
     firstCard = null;
     firstCardUrl = null;
     secondCard = null;
     secondCardUrl = null;
 }
 
-function ratePlayer(){
-    if(totalMatches === maxMatches){
+function ratePlayer(){ // rates performance by displaying stones
         if (timePassed < 50){
             $(".space").removeClass("shadow");
             $(".power").removeClass("shadow");
@@ -298,8 +358,41 @@ function ratePlayer(){
         } else {
             return;
         }
-    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function playAudio(){
     let cardClickSoundEffect = $(".mouse-action")[0];

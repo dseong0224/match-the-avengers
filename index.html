@@ -11,17 +11,13 @@
     <title>Memory Match</title>
 </head>
 <body>
-<div id="play-button-shadow">
+    <div id="play-button-shadow">
         <div id="play-button-container">
-            <p>"Match the Avengers" is a digital memory match game <br><br>
-                The clip below is a preview of how the game plays</p>
+            <p>"Match the Avengers" is a digital memory match game <br><br>The clip below is a preview of how the game plays</p>
             <div id="preview_button_container">
                 <img id="game-preview" src="./assets/images/video/ezgif.com-gif-maker.gif"/>
-                <div class="play-button" onClick= startGame(deckInPlay)>
-                    <span>Play</span>
-                </div>
+                <div class="play-button"><span>Play</span></div>
             </div>
-            
         </div>
     </div>
 <header>
@@ -33,7 +29,7 @@
 <main>
     <div id="popup_shadow" class="hide">
         <div id="popup" class="modal_shadow">
-            <a class="close" onclick=closeModal()>x</a>
+            <a class="close" onclick=closeResultModal()>x</a>
             <span class="end-of-game">You're getting the hang of it!</span><br>
             <div class="game-summary" style="list-style-type:none;"><br>
                 <div class="modal-attempts">Attempts</div><br>
@@ -45,7 +41,7 @@
                     <div class="time modal-stone shadow"></div>
                 </div>
             </div><br>
-            <span class="next-round-button" onclick={startGame(deckInPlay)}>Next Round</span>
+            <span class="next-round-button" >Next Round</span>
             <div id="victory_popup" class="hide">
                 <img id="vision_gif" src="./assets/images/gifs&png/vision-thankyou-gif.gif"/>
                 <img id="thors_hammer" src="./assets/images/gifs&png/thor-hammer.png"/>
