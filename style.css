@@ -107,7 +107,9 @@ main {
     height: 24%;
     width: 24%;
     border-radius: 5px;
+    -webkit-transition: transform 1.5s;
     transition: transform 1.5s;
+    -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
 }
 
@@ -115,7 +117,9 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     height: 100%;
     width: 100%;
@@ -127,9 +131,11 @@ main {
     background-position: top;
 }
 .back {
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 }
 .isFlipped {
+    -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
 }
 .panel{
@@ -315,6 +321,7 @@ audio {display: none;}
     margin: auto;
     box-shadow:  10px 15px 40px 0 rgba(181, 240, 20, 0.7);
     border: solid 3px white;
+    -webkit-transition: all 200ms;
     transition: all 200ms;
 }
 
@@ -341,12 +348,15 @@ audio {display: none;}
 
 .hide{
     visibility: hidden;
+    -webkit-transform:scale(0);
     transform:scale(0);
+    -webkit-transition: all 0.5s;
     transition: all 0.5s;
 
 }
 .next-round-button {
     font-size: 5vh;
+    -webkit-transition: transform .2s;
     transition: transform .2s;
 }
 .next-round-button:hover {
@@ -363,10 +373,12 @@ audio {display: none;}
     font-size: 2rem;
     font-weight: bold;
     color: #333;
+    -webkit-transition: transform .2s;
     transition: transform .2s;
 }
 #popup .close:hover {
     color: #E5F720;
+    -webkit-transform: scale(1.25);
     transform: scale(1.25);
 }
 #play-button-shadow {
@@ -408,6 +420,7 @@ audio {display: none;}
 }
 .play-button:hover {
     color: #E5F720;
+    -webkit-transform: scale(1.25);
     transform: scale(1.25);
 }
 .play-button span {
@@ -465,6 +478,7 @@ h4 {
     background-position: center;
     background-repeat: no-repeat;
     z-index: 100;
+    -webkit-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
     -webkit-animation: rotation 2s infinite linear;
 }
@@ -478,6 +492,7 @@ h4 {
 }
 #thors_hammer:hover {
     color: rgb(2, 183, 255);
+    -webkit-transform: scale(1.5);
     transform: scale(1.5);
 }
 
