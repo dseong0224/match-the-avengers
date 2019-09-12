@@ -87,6 +87,7 @@ let counter;
 let timePassed = 0;
 
 function startApp(){
+    openStartModal();
     // on play button click, play with first deck
     $(".play-button").click(function(){
         deckIndex = 0;
@@ -99,6 +100,17 @@ function startApp(){
         deckInPlay = deckArray[deckIndex];
         startGame(deckInPlay);
         deckIndex++;
+    })
+
+    if(deckInPlay === 4){
+        $(".next-round-button").click(function(){
+            deckInPlay = deckArray[deckIndex];
+            startGame(deckInPlay);
+            deckIndex = 0;
+        })
+    }
+    $(".restart").click(function(){
+        startGame(deckInPlay);
     })
 }
 
@@ -114,11 +126,7 @@ function startGame(deck) { //reset card values, stats, close all modals, reset t
     closeVictoryModal();
     $(".card").click(handleCardClick);
     playAudio();
-    // deckIndex++;
 }
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 function setGameTable (deck){
@@ -213,9 +221,6 @@ function handleCardClick(event) {
     }
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 
 function displayGameResult(){
     if(totalMatches === maxMatches){
@@ -229,13 +234,8 @@ function displayGameResult(){
             openResultModal();
             $('.next-round-button').unbind();
             $(".next-round-button").click(function (){
-                console.log("hello")
-                deckIndex = 0;
-                deckInPlay = deckArray[deckIndex]
-                startGame(deckInPlay);
-                // startApp();
-                }
-            )
+                startApp();
+            })
         } 
         openResultModal();
     }
@@ -269,15 +269,15 @@ function openResultModal(){
 }
 
 function closeResultModal(){
-    $("#popup_shadow").addClass('hide')
+    $("#popup_shadow").addClass('hide');
 }
 
 function openStartModal(){
-    $("#play-button-shadow").removeClass('hide')
+    $("#play-button-shadow").removeClass('hide');
 }
 
 function closeStartModal(){
-    resetStats()
+    resetStats();
     dimStones();
     $("#play-button-shadow").addClass('hide')
 }
@@ -285,20 +285,6 @@ function closeStartModal(){
 function closeVictoryModal(){
     $("#victory_popup").addClass('hide');
     $(".next-round-button").text("Next Round");
-}
-
-
-function restartGame(deck){  
-    startGame(deck);//start game with current card deck
-    // $("#countup").text("ready...");
-    // $('.attempts-count').text(attempts);
-    // $('.card').removeClass('isFlipped');
-    // $('.card').css('pointer-events', '');
-    // dimStones();
-    // closeResultModal();
-    // resetStats();
-    // startTimer();
-    // openStartModal();
 }
 
 function dimStones(){//shadows the stones both in modal and side panel
