@@ -1,8 +1,6 @@
 # Match the Avengers
 
 ## What are the specifications for the app?
-<details>
-    
 1. Cards are created dynamically using jQuery JS. 
 2. Each game-level draws eigth random cards from a card bank and difficulty goes up.
 3. Game includes features such as:
@@ -13,12 +11,13 @@
     - restart button
     - end of round, end of game modal
     
+<details>
 <summary> &#8592; Click arrow for gameplay instructions</summary>
 
 1. Match the Avengers is a web game in which a player attempts to match the images contained on "playing cards".
 2. There are a total of 16 cards:
     - Each card contains 1 of 8 images
-    - There are two of each image allowing for 9 total matches
+    - There are two of each image allowing for 8 total matches
 3. The following stats are tracked:
     - Number of seconds passed in current round of game
     - Total number of matches
