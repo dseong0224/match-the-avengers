@@ -1,5 +1,12 @@
 # Match the Avengers
 
+Match the Avengers is a Marvel Avengers themed multi-level memory game with enticing animations and graphics.
+Click PLAY to save the universe from Thanos, the greatest villain yet.
+
+### Live Demo: [matchtheavengers.danielcseong.com](matchtheavengers.danielcseong.com)
+
+![](hackersShop_demo.gif)
+
 ## What are the specifications for the app?
 1. Cards are created dynamically using jQuery JS. 
 2. Each game-level draws eigth random cards from a card bank and difficulty goes up.
@@ -10,7 +17,7 @@
     - flip animation
     - restart button
     - end of round, end of game modal
-    
+
 <details>
 <summary> &#8592; Click arrow for gameplay instructions</summary>
 
@@ -39,3 +46,36 @@
     - All cards are flipped back over
     - The total number of matches are reset
     - The score resets
+</details>
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+### Initial Setup
+
+1. Fork this repo and clone your fork from the terminal.
+
+```
+$ git clone https://github.com/[user_name]/match-the-avengers.git
+```
+
+2. Navigate to and open the /match-the-avengers directory.
+
+
+3. Open the index.html file in a browser and enjoy! 😃
+
+## Built With
+
+* javaScript
+* jQuery
+* HTML
+* CSS
+
+## Contributing
+
+Please feel free to fork this repo, make changes, submit pull requests, and send suggestions to dseongdev@gmail.com to make this app better.
+
+## Author
+
+* **Daniel Seong** - *Initial work* - [dseong0224](https://github.com/dseong0224)
