@@ -5,7 +5,7 @@ Click PLAY to save the universe from Thanos, the greatest villain yet.
 
 ### Live Demo: [matchtheavengers.danielcseong.com](matchtheavengers.danielcseong.com)
 
-![](hackersShop_demo.gif)
+![](match-the-avengers-demo.gif)
 
 ## What are the specifications for the app?
 1. Cards are created dynamically using jQuery JS. 
