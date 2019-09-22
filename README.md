@@ -3,7 +3,7 @@
 Match the Avengers is a Marvel Avengers themed multi-level memory game with enticing animations and graphics.
 Click PLAY to save the universe from Thanos, the greatest villain yet.
 
-### Live Demo: [matchtheavengers.danielcseong.com](matchtheavengers.danielcseong.com)
+### Live Demo: [matchtheavengers.danielcseong.com](http://matchtheavengers.danielcseong.com)
 
 ![](match-the-avengers-demo.gif)
 
