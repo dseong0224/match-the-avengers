@@ -128,7 +128,6 @@ function startGame(deck) { //reset card values, stats, close all modals, reset t
     playAudio();
 }
 
-
 function setGameTable (deck){
     let shuffledArray = shuffleArray(deck);
     let gameDeck = shuffledArray.slice(0,8);
@@ -184,6 +183,11 @@ function handleCardClick(event) {
             gameOver();
 
             firstCard = clickedCard;
+
+            if( attempts < 1 ){
+               startTimer(); 
+            }
+            
             firstCardUrl = clickedCard.find(".front").css('background-image');
             clickedCard.css('pointer-events', 'none');
         } else if (!secondCard) {
@@ -204,7 +208,7 @@ function handleCardClick(event) {
                     secondCard.css('pointer-events', '');
                     resetCardValues();
                     clickable = true;
-                }, 900);
+                }, 1200);
             } else if (firstCardUrl === secondCardUrl) {
                 totalMatches++;
                 resetCardValues();
@@ -213,7 +217,7 @@ function handleCardClick(event) {
                 setTimeout( function () {
                     displayGameResult()
                     clickable = true;
-                }, 900);
+                }, 1200);
             } else {
                 return;
             }
@@ -251,7 +255,7 @@ function startTimer(){
 function resetTimer(){ //resets and starts timer
     clearInterval(counter);
     timePassed = 0;
-    startTimer();
+    $("#countup").text(timePassed + "  sec");
 }
 
 function updateStats(){
