@@ -96,8 +96,12 @@ main {
     box-shadow: 10px 10px 10px 0 rgba(46, 61, 73, 0.5);
 }
 
+.card {
+    border: 1px solid transparent
+}
+
 .card:hover{
-    border: 5px solid rgba(74, 248, 83, 0.7)
+    border: 1px solid rgba(74, 248, 83, 0.7)
 }
 
 .card {
@@ -139,7 +143,7 @@ main {
     transform: rotateY(180deg);
 }
 .panel{
-    height: 95%;
+    height: 96.5%;
     width: 15%;
     border: white solid 3px;
     box-shadow: 25px 25px 25px 0 rgba(255, 35, 244, 0.7);
@@ -223,11 +227,19 @@ main {
 .space{
     background-image: url(./assets/images/stones/space-stone.png);
 }
+.mind{
+    background-image: url(./assets/images/stones/mind-stone.png);
+}
+.reality{
+    background-image: url(./assets/images/stones/reality_stone.png);
+}
+.soul{
+    background-image: url(./assets/images/stones/soul-stone.png);
+}
 .shadow{
     opacity: 0.2;
 }
 
-/* restart button */
 .restart{
     display: flex;
     justify-content: center;
@@ -238,7 +250,14 @@ main {
     width: 90%;
     margin-inline-start: 5%;
     margin-inline-end: 5%;
+    cursor: pointer;
 }
+
+/* .restart:hover {
+    height: 35%;
+    width: 95%;
+} */
+
 .gauntlet{
     height: 100%;
     width: 100%;
@@ -246,17 +265,6 @@ main {
     background-size: contain;
     background-repeat: no-repeat;
     background-image: url(./assets/images/gifs&png/infinity-gauntlet.png)
-}
-.gauntlet:hover{
-    cursor: pointer;
-    background-color: rgba(243, 72, 234, 0.1);
-    border-radius: 10%;
-    height: 10rem;
-    width: 10rem;
-    margin-top: -30%;
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
 }
 
 .spider-man-cameo{
@@ -397,7 +405,7 @@ audio {display: none;}
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 98%;
+    height: 96%;
     width: 98%;
     margin-top: 1%;
     margin-bottom: 1%;
