@@ -84,11 +84,13 @@ let secondCard = null;
 
 let clickable = true;
 
-let maxMatches = 8;
+let maxMatches = 1;
 let attempts = 0;
 
 let counter;
 let timeRemaining = 50;
+
+let countDown = null;
 
 function startApp(){
     openStartModal();
@@ -99,28 +101,24 @@ function startApp(){
         deckIndex = 0;
         deckInPlay = deckArray[deckIndex];
         startGame(deckInPlay);
-        deckIndex++;
     })
     // on 'next round' button click, play with next deck
     $(".next-round-button").click(function(){
+        deckIndex++
         deckInPlay = deckArray[deckIndex];
         startGame(deckInPlay);
-        deckIndex++;
     })
 
-    if(deckInPlay === 4){
-        $(".next-round-button").click(function(){
-            deckInPlay = deckArray[deckIndex];
-            startGame(deckInPlay);
-            deckIndex = 0;
-        })
-    }
     $(".restart").click(function(){
+        if( deckIndex === 3){
+            deckIndex = 3;
+        }
         startGame(deckInPlay);
     })
 }
 
 function startGame(deck) { //reset card values, stats, close all modals, reset timer
+    console.log("deckIndex: ", deckIndex)
     removePreviousDeck();
     resetCardValues();
     resetStats();
@@ -143,7 +141,6 @@ function setGameTable (deck){
 }
 
 function shuffleArray(array) {
-    console.log("current array: ", array)
     var currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
@@ -170,11 +167,15 @@ function removePreviousDeck(){
 }
 
 function gameOver(){
-    if(timeRemaining === 0 ){
-        clearInterval(counter);
-        ratePlayer();
-        updateStats();
-        openResultModal();
+        if(totalMatches !== maxMatches && timeRemaining === -1) {
+            ratePlayer();
+            updateStats();
+            $(".next-round-button").text("Try Again");
+            openResultModal();
+            $('.next-round-button').unbind();
+            $(".next-round-button").click(function (){
+                startGame(deckInPlay);;
+            })
     }
 }
 
@@ -186,7 +187,7 @@ function handleCardClick(event) {
 
         if (!firstCard) {
 
-            gameOver();
+            // gameOver();
 
             firstCard = clickedCard;
 
@@ -221,7 +222,9 @@ function handleCardClick(event) {
                 $('.attempts-count').text(attempts);
                 clickable = false;
                 setTimeout( function () {
-                    displayGameResult()
+                    if(totalMatches === maxMatches){
+                        displayGameResult()
+                    }
                     clickable = true;
                 }, 1200);
             } else {
@@ -233,31 +236,38 @@ function handleCardClick(event) {
 
 
 function displayGameResult(){
-    if(totalMatches === maxMatches){
-
-        if(deckIndex === 4){
+        if(deckIndex === 3){
             clearInterval(counter);
             ratePlayer();
             updateStats();
             $(".next-round-button").text("PLAY AGAIN");
             $("#victory_popup").removeClass('hide');
             openResultModal();
+            deckIndex = 0;
+            deckInPlay = deckArray[deckIndex];
             $('.next-round-button').unbind();
-            $(".next-round-button").click(function (){
+            $(".next-round-button").click( function (){
                 startApp();
             })
-        } 
-
-        openResultModal();
-        newStoneIndex++;
-    }
+        } else {
+            openResultModal();
+            newStoneIndex++;
+        }
 }
 
 function startTimer(){
+    timeRemaining = 50;
+
     counter = setInterval(function(){
     $("#countdown").text(timeRemaining + "  sec");
     timeRemaining -= 1;
     }, 1000);
+
+    clearTimeout(countDown);
+    countDown = setTimeout(function(){
+        clearInterval(counter);
+        gameOver();
+    }, 51000)
 }
 
 function resetTimer(){ //resets and starts timer
@@ -269,7 +279,7 @@ function resetTimer(){ //resets and starts timer
 function updateStats(){
     $(".modal-attempts").text("You  made "+ attempts + " attempts");
     $(".attempts-count").text(attempts);
-    $(".modal-time").text(" in " + timeRemaining + " seconds");
+    $(".modal-time").text(" in " + (50-timeRemaining) + " seconds");
     $(".modal-score-title").append($(".modal-score"));
 }
 
@@ -290,7 +300,6 @@ function openStartModal(){
 
 function closeStartModal(){
     resetStats();
-    // dimStones();
     $("#play-button-shadow").addClass('hide')
 }
 
@@ -322,34 +331,17 @@ function resetCardValues(){ //reset card values at beginning of each game
 }
 
 function ratePlayer(){ // rates performance by displaying stones
-        if (timeRemaining < 50){
-            $(stonesArray[newStoneIndex]).removeClass("shadow");
-            // $(".power").removeClass("shadow");
-            // $(".time").removeClass("shadow");
-            $(".end-of-game").text("Wakanda Forever");
-            if(deckIndex === 4){
+        if (timeRemaining < 50 && totalMatches === maxMatches){
+            if(deckIndex === 3){
+                $(".mind").removeClass("shadow");
                 $(".soul").removeClass("shadow");
                 $(".reality").removeClass("shadow");
                 $(".end-of-game").text("You are worthy now!");
+            } else {
+                $(stonesArray[newStoneIndex]).removeClass("shadow");
+                $(".end-of-game").text("Wakanda Forever");
             }
         } 
-        // else if(timeRemaining < 90){
-        //     $(".space").removeClass("shadow");
-        //     $(".power").removeClass("shadow");
-        //     $(".end-of-game").text("You're getting the hang of it");
-        //     if(deckIndex === 4){
-        //         $(".end-of-game").text("You are worthy now!");
-        //     }
-        // } else if (timeRemaining < 120){
-        //     $(".space").removeClass("shadow");
-        //     $(".end-of-game").text("Try again");
-        //     deckIndex--;
-        // } else if (timeRemaining > 150){
-        //     $(".end-of-game").text("Game Over");
-        // } 
-        else {
-            return;
-        }
 }
 
 function playAudio(){
