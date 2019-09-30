@@ -60,6 +60,10 @@ let levelFourCardsArray = [
     "url(./assets/images/cards/levelFourCards/mark_XLVII.png)"
 ]
 
+let stonesArray = [".space", ".power", ".time", ".mind", ".soul", ".reality"]
+
+let newStoneIndex = 0
+
 let deckArray = [
     levelOneCardsArray,
     levelTwoCardsArray,
@@ -84,12 +88,14 @@ let maxMatches = 8;
 let attempts = 0;
 
 let counter;
-let timePassed = 0;
+let timeRemaining = 50;
 
 function startApp(){
     openStartModal();
     // on play button click, play with first deck
     $(".play-button").click(function(){
+        dimStones();
+        newStoneIndex = 0
         deckIndex = 0;
         deckInPlay = deckArray[deckIndex];
         startGame(deckInPlay);
@@ -164,7 +170,7 @@ function removePreviousDeck(){
 }
 
 function gameOver(){
-    if(timePassed === 150 ){
+    if(timeRemaining === 0 ){
         clearInterval(counter);
         ratePlayer();
         updateStats();
@@ -241,27 +247,29 @@ function displayGameResult(){
                 startApp();
             })
         } 
+
         openResultModal();
+        newStoneIndex++;
     }
 }
 
 function startTimer(){
     counter = setInterval(function(){
-    $("#countup").text(timePassed + "  sec");
-    timePassed += 1;
+    $("#countdown").text(timeRemaining + "  sec");
+    timeRemaining -= 1;
     }, 1000);
 }
 
 function resetTimer(){ //resets and starts timer
     clearInterval(counter);
-    timePassed = 0;
-    $("#countup").text(timePassed + "  sec");
+    timeRemaining = 50;
+    $("#countdown").text(timeRemaining + "  sec");
 }
 
 function updateStats(){
     $(".modal-attempts").text("You  made "+ attempts + " attempts");
     $(".attempts-count").text(attempts);
-    $(".modal-time").text(" in " + timePassed + " seconds");
+    $(".modal-time").text(" in " + timeRemaining + " seconds");
     $(".modal-score-title").append($(".modal-score"));
 }
 
@@ -282,7 +290,7 @@ function openStartModal(){
 
 function closeStartModal(){
     resetStats();
-    dimStones();
+    // dimStones();
     $("#play-button-shadow").addClass('hide')
 }
 
@@ -295,6 +303,9 @@ function dimStones(){//shadows the stones both in modal and side panel
     $(".space").addClass("shadow");
     $(".power").addClass("shadow");
     $(".time").addClass("shadow");
+    $(".mind").addClass("shadow");
+    $(".soul").addClass("shadow");
+    $(".reality").addClass("shadow");
 }
 
 function resetStats(){ // resests stats at beginning of each new game
@@ -311,28 +322,32 @@ function resetCardValues(){ //reset card values at beginning of each game
 }
 
 function ratePlayer(){ // rates performance by displaying stones
-        if (timePassed < 50){
-            $(".space").removeClass("shadow");
-            $(".power").removeClass("shadow");
-            $(".time").removeClass("shadow");
+        if (timeRemaining < 50){
+            $(stonesArray[newStoneIndex]).removeClass("shadow");
+            // $(".power").removeClass("shadow");
+            // $(".time").removeClass("shadow");
             $(".end-of-game").text("Wakanda Forever");
             if(deckIndex === 4){
+                $(".soul").removeClass("shadow");
+                $(".reality").removeClass("shadow");
                 $(".end-of-game").text("You are worthy now!");
             }
-        } else if(timePassed < 90){
-            $(".space").removeClass("shadow");
-            $(".power").removeClass("shadow");
-            $(".end-of-game").text("You're getting the hang of it");
-            if(deckIndex === 4){
-                $(".end-of-game").text("You are worthy now!");
-            }
-        } else if (timePassed < 120){
-            $(".space").removeClass("shadow");
-            $(".end-of-game").text("Try again");
-            deckIndex--;
-        } else if (timePassed > 150){
-            $(".end-of-game").text("Game Over");
-        } else {
+        } 
+        // else if(timeRemaining < 90){
+        //     $(".space").removeClass("shadow");
+        //     $(".power").removeClass("shadow");
+        //     $(".end-of-game").text("You're getting the hang of it");
+        //     if(deckIndex === 4){
+        //         $(".end-of-game").text("You are worthy now!");
+        //     }
+        // } else if (timeRemaining < 120){
+        //     $(".space").removeClass("shadow");
+        //     $(".end-of-game").text("Try again");
+        //     deckIndex--;
+        // } else if (timeRemaining > 150){
+        //     $(".end-of-game").text("Game Over");
+        // } 
+        else {
             return;
         }
 }
