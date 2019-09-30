@@ -189,7 +189,7 @@ main {
     justify-content: center;
     align-items: center;
 }
-#countup {
+#countdown {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -208,6 +208,7 @@ main {
     flex-direction: column;
     justify-content: space-around;
     height: 65%;
+    margin-bottom: 5%
 }
 .stone{
     display: flex;
@@ -512,7 +513,6 @@ h4 {
         background-color: rgba(141, 65, 228, 0.7);
         border-radius: 7px;
         display: inline-block;
-        /* margin: 10% 2%; */
     }
     main {
         display: flex;
@@ -545,11 +545,10 @@ h4 {
         margin-bottom: 0;
     }
 
-    #countup {
+    #countdown {
         margin-top: 0;
         margin-bottom: 0;
     }
-
 
     .right{
         justify-content: space-around;
@@ -557,6 +556,7 @@ h4 {
         flex-direction: row;
         display: flex;
       }
+
     .stones-container {
         display: flex;
         flex-direction: row;
@@ -566,10 +566,13 @@ h4 {
         align-items: center;
         padding-left: 0;
         margin-right: 0;
+        margin-bottom: 0;
     }
+
     .stones-container span {
         margin-right: 10%;
     }
+
     .stone {
         display: flex;
         height: 7vh;
@@ -589,12 +592,13 @@ h4 {
         width: 35%;
         margin-inline-start: 0;
         margin-inline-end: 0;
+        /* margin-top: -5%; */
     }
+
     .gauntlet{
         height: 95%;
         width: 25%;
     }
-
 
     .deck {
         width: 96%;
@@ -657,6 +661,10 @@ h4 {
     }
     #victory_modal{
         height: 15%;
+    }
+
+    #play-button-container {
+        height: 98%;
     }
 }
 @media only screen and  (max-width: 390px) and (min-width: 370px) {
