@@ -84,7 +84,7 @@ let secondCard = null;
 
 let clickable = true;
 
-let maxMatches = 1;
+let maxMatches = 8;
 let attempts = 0;
 
 let counter;
