@@ -84,7 +84,7 @@ let secondCard = null;
 
 let clickable = true;
 
-let maxMatches = 8;
+let maxMatches = 1;
 let attempts = 0;
 
 let counter;
@@ -110,10 +110,12 @@ function startApp(){
     })
 
     $(".restart").click(function(){
-        if( deckIndex === 3){
-            deckIndex = 3;
+        if(clickable){
+            if( deckIndex === 3){
+                deckIndex = 3;
+            }
+            startGame(deckInPlay);
         }
-        startGame(deckInPlay);
     })
 }
 
@@ -186,8 +188,6 @@ function handleCardClick(event) {
         clickedCard.toggleClass('isFlipped');
 
         if (!firstCard) {
-
-            // gameOver();
 
             firstCard = clickedCard;
 
